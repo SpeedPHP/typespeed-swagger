@@ -18,16 +18,16 @@ function toRequestParams(paramName: string, requestMethod: Function) {
     }
 }
 
-function swaggerMiddleware() {
-    // this.app.use(
-    //     "/docs",
-    //     swaggerUi.serve,
-    //     swaggerUi.setup(undefined, {
-    //       swaggerOptions: {
-    //         url: "/api-docs.json",
-    //       },
-    //     })
-    //   );
+function swaggerMiddleware(app: any, options?: {}) {
+    app.use(
+    "/docs",
+    swaggerUi.serve,
+    swaggerUi.setup(undefined, {
+            swaggerOptions: {
+                url: "/example.json"
+            }
+        })
+    );
 }
 
 function toMapping(value: string, mappingMethod: Function, responseClass?: any) {
