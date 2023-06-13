@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "target": "ES2017",
+    "rootDir": "./",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "plugins": [
+			{
+				"transform": "typescript-rtti/dist/transformer"
+			}
+		]
+	}
+}
