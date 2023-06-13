@@ -6,6 +6,7 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "target": "ES2017",
+    "noEmit": true,
     "rootDir": "./",
     "typeRoots": [
       "node_modules/@types"
@@ -15,5 +16,8 @@
 				"transform": "typescript-rtti/dist/transformer"
 			}
 		]
-	}
+	},
+  "exclude": [
+    "node_modules",
+  ]
 }

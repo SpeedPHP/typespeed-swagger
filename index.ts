@@ -4,6 +4,7 @@ import {
 } from 'typespeed';
 import 'reflect-metadata';
 import { reflect } from 'typescript-rtti';
+import * as swaggerUi from "swagger-ui-express"
 
 
 function reqBody(target: any, propertyKey: string, parameterIndex: number) {
@@ -18,7 +19,15 @@ function toRequestParams(paramName: string, requestMethod: Function) {
 }
 
 function swaggerMiddleware() {
-
+    // this.app.use(
+    //     "/docs",
+    //     swaggerUi.serve,
+    //     swaggerUi.setup(undefined, {
+    //       swaggerOptions: {
+    //         url: "/api-docs.json",
+    //       },
+    //     })
+    //   );
 }
 
 function toMapping(value: string, mappingMethod: Function, responseClass?: any) {

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "watch": "nodemon ./ ",
-    "test": "ts-node -C ttypescript test.ts"
+    "test": "ts-node -C ttypescript test/main.ts",
+    "build": "ttsc "
   },
   "homepage": "https://github.com/speedphp/typespeed-swagger#readme",
   "repository": {
