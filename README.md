@@ -13,9 +13,9 @@ npm install typespeed-swagger
 
 ### Usage
 
-1. Modify the imports of the following decorators in the original TypeSpeed project and replace them with the path from typespeed-swagger. The decorators that need to be replaced are: `@getMapping`、`@postMapping`、`@requestMapping`、`@reqBody`、`@reqQuery`、`@reqForm`.
+1. Modify the imports of the following decorators in the original TypeSpeed project and replace them with the path from typespeed-swagger. The decorators that need to be replaced are: `@getMapping`, `@postMapping`, `@requestMapping`, `@reqBody`, `@reqQuery`, `@reqForm`, `@reqParam`.
 2. The three *Mapping decorators have a second optional parameter. If the response object is a Promise, please put the return type in the second parameter.
-3. Please put the `SwaggerMiddleware` into TypeSpeed's middleware list so that it can support Swagger web page access.
+3. Please put the `swaggerMiddleware` into TypeSpeed's middleware list so that it can support Swagger web page access.
 
 ### Link
 

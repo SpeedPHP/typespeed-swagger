@@ -50,9 +50,11 @@ function paramOne(path:string) {
 setTimeout(() => {
 	for(let [target, propertyKey] of methodsOne.entries()){
 		const paramtypes = Reflect.getMetadata('design:paramtypes', target, propertyKey);
-		console.log(paramtypes)
+		paramtypes.forEach((paramtype) => {
+			getParameterTwo(paramtype)
+		})
 	}
-}, 5000);
+}, 1000);
 
 function getParameterTwo(target) {
 	console.log(target.name)
@@ -60,7 +62,7 @@ function getParameterTwo(target) {
 	const obj = new target;
 	Object.getOwnPropertyNames(obj).forEach(k => {
 		const params = ref.getParameter(k)
-		console.log(k, params.type._ref)
+		console.log(k, params.type.ref)
 		const relatObj = params.type
 		if(/^class\s/.test(relatObj.ref)){
 			getParameterTwo(relatObj.class)

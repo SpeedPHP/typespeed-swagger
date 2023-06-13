@@ -4,6 +4,7 @@
   "description": "The Swagger plugin for the TypeSpeed framework.",
   "main": "index.js",
   "scripts": {
+    "watch": "nodemon ./ ",
     "test": "ts-node -C ttypescript test.ts"
   },
   "homepage": "https://github.com/speedphp/typespeed-swagger#readme",
@@ -16,7 +17,8 @@
   "dependencies": {
     "reflect-metadata": "0.1.13",
 		"typescript-rtti": "latest",
-    "swagger-ui-express":"4.6.3"
+    "swagger-ui-express":"4.6.3",
+    "typespeed": "latest"
   },
   "devDependencies": {
 		"@types/node": "18.0.6",
