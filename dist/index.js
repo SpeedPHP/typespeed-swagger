@@ -16,7 +16,7 @@ const __RΦ = { m: (k, v) => (t, ...a) => t && Reflect.metadata ? Reflect.metada
             __RΦ.t[id] = t = l;
         }
         return t;
-    }, t: { [1]: { RΦ: t => ({ TΦ: "~" }) }, [15]: { LΦ: t => String }, [16]: { LΦ: t => Number }, [24]: { RΦ: t => ({ TΦ: "V" }) }, [66]: { LΦ: t => Function }, [46546]: { RΦ: t => ({ TΦ: "F", r: __RΦ.a(1), p: [{ n: "target", t: () => __RΦ.a(1), b: void 0, v: null }, { n: "propertyKey", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "parameterIndex", t: () => __RΦ.a(16), b: void 0, v: null }], f: "" }) }, [39]: { RΦ: t => ({ TΦ: "O", m: [] }) }, [46553]: { RΦ: t => ({ TΦ: "F", r: __RΦ.a(1), p: [{ n: "target", t: () => __RΦ.a(1), b: void 0, v: null }, { n: "propertyKey", t: () => __RΦ.a(15), b: void 0, v: null }], f: "" }) }, [4]: { RΦ: t => ({ TΦ: "~" }) } } };
+    }, t: { [1]: { RΦ: t => ({ TΦ: "~" }) }, [15]: { LΦ: t => String }, [16]: { LΦ: t => Number }, [24]: { RΦ: t => ({ TΦ: "V" }) }, [66]: { LΦ: t => Function }, [48487]: { RΦ: t => ({ TΦ: "F", r: __RΦ.a(1), p: [{ n: "target", t: () => __RΦ.a(1), b: void 0, v: null }, { n: "propertyKey", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "parameterIndex", t: () => __RΦ.a(16), b: void 0, v: null }], f: "" }) }, [39]: { RΦ: t => ({ TΦ: "O", m: [] }) }, [48495]: { RΦ: t => ({ TΦ: "F", r: __RΦ.a(1), p: [{ n: "target", t: () => __RΦ.a(1), b: void 0, v: null }, { n: "propertyKey", t: () => __RΦ.a(15), b: void 0, v: null }], f: "" }) }, [4]: { RΦ: t => ({ TΦ: "~" }) } } };
 const typespeed_1 = require("typespeed");
 require("reflect-metadata");
 const typescript_rtti_1 = require("typescript-rtti");
@@ -36,7 +36,7 @@ function toRequestParams(paramName, requestMethod) {
 }
 __RΦ.m("rt:p", [{ n: "paramName", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "requestMethod", t: () => __RΦ.a(66), b: void 0, v: null }])(toRequestParams);
 __RΦ.m("rt:f", "F")(toRequestParams);
-__RΦ.m("rt:t", () => __RΦ.a(46546))(toRequestParams);
+__RΦ.m("rt:t", () => __RΦ.a(48487))(toRequestParams);
 function swaggerMiddleware(app, options) {
     app.use("/docs", swaggerUi.serve, swaggerUi.setup(undefined, {
         swaggerOptions: {
@@ -67,18 +67,18 @@ function toMapping(value, mappingMethod, responseClass) {
 }
 __RΦ.m("rt:p", [{ n: "value", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "mappingMethod", t: () => __RΦ.a(66), b: void 0, v: null }, { n: "responseClass", t: () => __RΦ.a(1), b: void 0, v: null, f: "?" }])(toMapping);
 __RΦ.m("rt:f", "F")(toMapping);
-__RΦ.m("rt:t", () => __RΦ.a(46553))(toMapping);
-const reqQuery = __RΦ.f((paramName) => toRequestParams(paramName, typespeed_1.reqQuery), [__RΦ.m("rt:p", [{ n: "paramName", t: () => __RΦ.a(15), b: void 0, v: null }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(46546))], "reqQuery");
+__RΦ.m("rt:t", () => __RΦ.a(48495))(toMapping);
+const reqQuery = __RΦ.f((paramName) => toRequestParams(paramName, typespeed_1.reqQuery), [__RΦ.m("rt:p", [{ n: "paramName", t: () => __RΦ.a(15), b: void 0, v: null }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(48487))], "reqQuery");
 exports.reqQuery = reqQuery;
-const reqForm = __RΦ.f((paramName) => toRequestParams(paramName, typespeed_1.reqForm), [__RΦ.m("rt:p", [{ n: "paramName", t: () => __RΦ.a(15), b: void 0, v: null }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(46546))], "reqForm");
+const reqForm = __RΦ.f((paramName) => toRequestParams(paramName, typespeed_1.reqForm), [__RΦ.m("rt:p", [{ n: "paramName", t: () => __RΦ.a(15), b: void 0, v: null }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(48487))], "reqForm");
 exports.reqForm = reqForm;
-const reqParam = __RΦ.f((paramName) => toRequestParams(paramName, typespeed_1.reqParam), [__RΦ.m("rt:p", [{ n: "paramName", t: () => __RΦ.a(15), b: void 0, v: null }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(46546))], "reqParam");
+const reqParam = __RΦ.f((paramName) => toRequestParams(paramName, typespeed_1.reqParam), [__RΦ.m("rt:p", [{ n: "paramName", t: () => __RΦ.a(15), b: void 0, v: null }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(48487))], "reqParam");
 exports.reqParam = reqParam;
-const getMapping = __RΦ.f((value, responseClass) => toMapping(value, typespeed_1.getMapping, responseClass), [__RΦ.m("rt:p", [{ n: "value", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "responseClass", t: () => __RΦ.a(4), b: void 0, v: null, f: "?" }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(46553))], "getMapping");
+const getMapping = __RΦ.f((value, responseClass) => toMapping(value, typespeed_1.getMapping, responseClass), [__RΦ.m("rt:p", [{ n: "value", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "responseClass", t: () => __RΦ.a(4), b: void 0, v: null, f: "?" }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(48495))], "getMapping");
 exports.getMapping = getMapping;
-const postMapping = __RΦ.f((value, responseClass) => toMapping(value, typespeed_1.postMapping, responseClass), [__RΦ.m("rt:p", [{ n: "value", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "responseClass", t: () => __RΦ.a(4), b: void 0, v: null, f: "?" }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(46553))], "postMapping");
+const postMapping = __RΦ.f((value, responseClass) => toMapping(value, typespeed_1.postMapping, responseClass), [__RΦ.m("rt:p", [{ n: "value", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "responseClass", t: () => __RΦ.a(4), b: void 0, v: null, f: "?" }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(48495))], "postMapping");
 exports.postMapping = postMapping;
-const requestMapping = __RΦ.f((value, responseClass) => toMapping(value, typespeed_1.requestMapping, responseClass), [__RΦ.m("rt:p", [{ n: "value", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "responseClass", t: () => __RΦ.a(4), b: void 0, v: null, f: "?" }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(46553))], "requestMapping");
+const requestMapping = __RΦ.f((value, responseClass) => toMapping(value, typespeed_1.requestMapping, responseClass), [__RΦ.m("rt:p", [{ n: "value", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "responseClass", t: () => __RΦ.a(4), b: void 0, v: null, f: "?" }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(48495))], "requestMapping");
 exports.requestMapping = requestMapping;
 function getInfoByObjcet(target) {
     console.log(target.name);
