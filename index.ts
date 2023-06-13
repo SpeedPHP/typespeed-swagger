@@ -36,7 +36,7 @@ function toMapping(value: string, mappingMethod: Function, responseClass?: any) 
         const returnType = Reflect.getMetadata('design:returntype', target, propertyKey);
         if(responseClass !== undefined){
             getInfoByObjcet(responseClass);
-        } else if (returnType !== Promise) {
+        } else if (returnType !== undefined && returnType !== Promise) {
 			getInfoByObjcet(returnType);
 		} else {
 			{};

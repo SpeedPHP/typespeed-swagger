@@ -1,4 +1,5 @@
-import { component, getMapping, postMapping, log, req, res, reqQuery, reqBody, reqForm, reqParam } from "typespeed";
+import { getMapping, postMapping, reqQuery, reqBody, reqForm, reqParam } from "../index";
+import { component, log, req, res } from "typespeed";
 import DataC from "./entities/data-c.class";
 import DataB from "./entities/data-b.class";
 import DataA from "./entities/data-a.class";

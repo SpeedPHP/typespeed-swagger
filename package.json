@@ -2,11 +2,11 @@
   "name": "typespeed-swagger",
   "version": "0.0.1",
   "description": "The Swagger plugin for the TypeSpeed framework.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "watch": "nodemon ./ ",
     "test": "ts-node -C ttypescript test/main.ts",
-    "build": "ttsc "
+    "build": "ttsc index.ts"
   },
   "homepage": "https://github.com/speedphp/typespeed-swagger#readme",
   "repository": {
