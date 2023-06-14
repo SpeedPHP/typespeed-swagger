@@ -1,3 +1,6 @@
+import Item from "./item.class";
+
+type typeKind = "string" | "number" | "boolean" | "array" | "$ref";
 
 export default class Parameter {
     public name: string;
@@ -5,11 +8,11 @@ export default class Parameter {
     public in: string = "query";
     public style: string = "form";
     public required: boolean = true;
-    public schemaType: string;
+    public schema: object;
 
-    constructor(name: string, schemaType: string, description?: string){
+    constructor(name: string, typeKey: typeKind, typeValue?: string, description?: string){
         this.name = name;
-        this.schemaType = schemaType;
+        this.schema = new Item(typeKey, typeValue).toDoc();
         this.description = description;
     }
 
@@ -20,9 +23,7 @@ export default class Parameter {
             "style": this.style,
             "description": this.description || "",
             "required": this.required,
-            "schema": {
-                "type": this.schemaType
-            }
+            "schema": this.schema
         }
     }
 }

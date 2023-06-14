@@ -3,8 +3,8 @@ import { getMapping } from "../index";
 import Document from "../templates/document.class";
 import Schema from "../templates/schema.class";
 import Path from "../templates/path.class";
-import Responses from "../templates/responses.class";
 import Item from "../templates/item.class";
+import Parameter from "../templates/parameter.class";
 
 @component
 export default class Doc {
@@ -20,10 +20,12 @@ export default class Doc {
 
         doc.addSchema(schemaUser);
         doc.addSchema(schemaGame);
-        doc.addPath("/user", new Path("post", "getProfile", new Responses("array", "Game"), 
-        "UserController"));
-        doc.addPath("/user", new Path("get", "getProfile", new Responses("array", "Game"), 
-        "UserController"));
+        const userPath = new Path("post", "getProfile", "UserController");
+        userPath.addResponse("200", "OK", "$ref", "User");
+        userPath.addRequestBody("application/json", "$ref", "User");
+        userPath.addParameter(new Parameter("name", "string", "Name of the user"));
+        userPath.addParameter(new Parameter("game", "$ref", "Game"));
+        doc.addPath("/user", userPath);
 
         res.json(doc.toDoc());
     }
