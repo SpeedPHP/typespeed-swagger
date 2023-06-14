@@ -4,7 +4,6 @@ import Document from "../templates/document.class";
 import Schema from "../templates/schema.class";
 import Path from "../templates/path.class";
 import Item from "../templates/item.class";
-import Parameter from "../templates/parameter.class";
 
 @component
 export default class Doc {
@@ -23,8 +22,8 @@ export default class Doc {
         const userPath = new Path("post", "getProfile", "UserController");
         userPath.addResponse("200", "OK", "$ref", "User");
         userPath.addRequestBody("application/json", "$ref", "User");
-        userPath.addParameter(new Parameter("name", "string", "Name of the user"));
-        userPath.addParameter(new Parameter("game", "$ref", "Game"));
+        userPath.addParameter("name", "string");
+        userPath.addParameter("game", "$ref", "Game");
         doc.addPath("/user", userPath);
 
         res.json(doc.toDoc());

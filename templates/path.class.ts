@@ -1,5 +1,4 @@
 import Item from "./item.class";
-import Parameter from "./parameter.class";
 type methodType = "post" | "get" | "put" | "delete" | "options" | "head" | "patch";
 type typeKind = "string" | "number" | "boolean" | "array" | "$ref";
 
@@ -8,7 +7,7 @@ export default class Path {
     public summary: string;
     public method: methodType;
     public responses: object = {};
-    public parameters: Parameter[] = [];
+    public parameters: object[] = [];
     public requestBody: object;
 
     constructor(method: methodType, summary: string, tagName?: string){
@@ -28,8 +27,14 @@ export default class Path {
         }
     }
 
-    addParameter(param: Parameter){
-        this.parameters.push(param);
+    addParameter(name: string, typeKey: typeKind, typeValue?: string){
+        this.parameters.push({
+            "name": name,
+            "in": "query",
+            "style": "form",
+            "required": true,
+            "schema": new Item(typeKey, typeValue).toDoc()
+        });
     }
 
     addRequestBody(contentType: string, typeKey: typeKind, typeValue?: string){
@@ -50,7 +55,7 @@ export default class Path {
             "responses": this.responses,
         }
         if(this.requestBody) doc["requestBody"] = this.requestBody;
-        if(this.parameters.length > 0) doc["parameters"] = this.parameters.map(param => param.toDoc());
+        if(this.parameters.length > 0) doc["parameters"] = this.parameters;
 
         return doc;
     }
