@@ -4,16 +4,10 @@
     "title": "Game Test",
     "description": "This is a game test",
     "license": {
-      "name": "Apache 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+      "name": "MIT"
     },
     "version": "1.0"
   },
-  "servers": [
-    {
-      "url": "https://game.speedphp.com"
-    }
-  ],
   "tags": [
     {
       "name": "game-controller",
@@ -68,6 +62,7 @@
             "description": "profileName",
             "required": true,
             "style": "form",
+            "in": "query",
             "schema": {
               "type": "string"
             }
@@ -100,6 +95,7 @@
             "description": "userId",
             "required": true,
             "style": "form",
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -110,6 +106,7 @@
             "description": "con",
             "required": true,
             "style": "form",
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -152,9 +149,6 @@
         "title": "GameResponse",
         "type": "object",
         "properties": {
-          "type": {
-            "type": "string"
-          },
           "initLevel": {
             "type": "number"
           },

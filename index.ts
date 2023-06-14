@@ -58,11 +58,13 @@ function getInfoByObjcet(target) {
 	const obj = new target;
 	Object.getOwnPropertyNames(obj).forEach(k => {
 		const params = ref.getParameter(k)
-		console.log(k, params.type.ref)
-		const relatObj = params.type
-		if(/^class\s/.test(relatObj.ref)){
-			getInfoByObjcet(relatObj.class)
-		}
+        if(params && params.type && params.type.ref){
+            console.log(k, params.type.ref)
+            const relatObj = params.type
+            if(/^class\s/.test(relatObj.ref)){
+                getInfoByObjcet(relatObj.class)
+            }
+        }
 	})
 }
 
