@@ -10,7 +10,7 @@ export default class Path {
     public parameters: object[] = [];
     public requestBody: object;
 
-    constructor(method: methodType, summary: string, tagName?: string){
+    constructor(method: methodType, tagName: string, summary: string){
         this.method = method;
         this.summary = summary;
         this.tagName = tagName;
@@ -37,10 +37,10 @@ export default class Path {
         });
     }
 
-    addRequestBody(contentType: string, typeKey: typeKind, typeValue?: string){
+    addRequestBody(typeKey: typeKind, typeValue?: string){
         this.requestBody = {
             "content": {
-                [contentType]: {
+                "*/*": {
                     "schema": new Item(typeKey, typeValue).toDoc()
                 }
             }
@@ -49,7 +49,7 @@ export default class Path {
 
     toDoc() {
         const doc = {
-            "tags": [this.tagName || "default"],
+            "tags": this.tagName,
             "summary": this.summary,
             "operationId": this.summary + this.method.charAt(0).toUpperCase() + this.method.slice(1),
             "responses": this.responses,

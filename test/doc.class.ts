@@ -11,17 +11,18 @@ export default class Doc {
     @getMapping("/test")
     public test(req, res){
         const doc = new Document();
-        const schemaUser = new Schema("User", new Map([
-            ["name", new Item("string")], ["age", new Item("number")], ["game", new Item("$ref", "Game")]
-        ]));
+        const schemaUser = new Schema("User");
+        schemaUser.addProperty("name", new Item("string"));
+        schemaUser.addProperty("age", new Item("number"));
+        schemaUser.addProperty("game", new Item("$ref", "Game"));
         const schemaGame = new Schema("Game");
         schemaGame.addProperty("name", new Item("string"));
 
         doc.addSchema(schemaUser);
         doc.addSchema(schemaGame);
-        const userPath = new Path("post", "getProfile", "UserController");
+        const userPath = new Path("post", "UserController", "getProfile");
         userPath.addResponse("200", "OK", "$ref", "User");
-        userPath.addRequestBody("application/json", "$ref", "User");
+        userPath.addRequestBody("$ref", "User");
         userPath.addParameter("name", "string");
         userPath.addParameter("game", "$ref", "Game");
         doc.addPath("/user", userPath);
