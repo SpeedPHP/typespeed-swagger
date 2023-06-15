@@ -3,21 +3,30 @@ import {
     getMapping as tsGetMapping, postMapping as tsPostMapping, requestMapping as tsRequestMapping
 } from 'typespeed';
 import 'reflect-metadata';
-import { reflect, ReflectedClass, ReflectedTypeRef } from 'typescript-rtti';
+import { reflect, ReflectedClass, ReflectedTypeRef, ReflectedClassRef } from 'typescript-rtti';
 import * as swaggerUi from "swagger-ui-express";
 type methodType = "post" | "get" | "put" | "delete" | "options" | "head" | "patch" | "all";
 type methodMappingType = "post" | "get" | "all";
-type typeKind = "string" | "number" | "boolean" | "array" | "$ref";
+type typeKind = "string" | "number" | "boolean" | "$ref" | "object";
+type routerType = { method: methodMappingType, path: string, clazz: string, target: any, propertyKey: string };
 
-const routerMap: Map<string, Map<string, object>> = new Map();
-const paramMap: Map<string, Map<string, object>> = new Map();
+const routerMap: Map<string, routerType> = new Map();
+const paramMap: Map<string, object> = new Map();
 
 function reqBody(target: any, propertyKey: string, parameterIndex: number) {
     return tsReqBody(target, propertyKey, parameterIndex);
 }
 
-function toRequestParams(paramName: string, requestMethod: Function) {
-    const handler = requestMethod(paramName);
+function reqParam(target: any, propertyKey: string, parameterIndex: number) {
+    return tsReqParam(target, propertyKey, parameterIndex);
+}
+
+function reqQuery(target: any, propertyKey: string, parameterIndex: number) {
+    return tsReqQuery(target, propertyKey, parameterIndex);
+}
+
+function reqForm(paramName: string) {
+    const handler = tsReqForm(paramName);
     return (target: any, propertyKey: string, parameterIndex: number) => {
         return handler(target, propertyKey, parameterIndex);
     }
@@ -34,43 +43,60 @@ function swaggerMiddleware(app: any, options?: {}) {
         })
     );
 }
-let store = [];
+
 function toMapping(method: methodMappingType, path: string, mappingMethod: Function, responseClass?: any) {
     const handler = mappingMethod(path);
     return (target: any, propertyKey: string) => {
-        const apiPath = new ApiPath(method, target.constructor.name, propertyKey);
-        const returnType = Reflect.getMetadata('design:returntype', target, propertyKey);
-        let returnTypeKey = "";
-        if(returnType === Promise){
-            store = [target, propertyKey, returnType]
+        const key = [target.constructor.name, propertyKey].toString();
+        if(!routerMap.has(key)){
+            routerMap.set(key, {
+                "method": method,
+                "path": path,
+                "clazz": target.constructor.name,
+                "target": target,
+                "propertyKey": propertyKey
+            });
         }
-        if(responseClass !== undefined){
-            returnTypeKey = getInfoByObjcet(responseClass);
-        } else if (returnType !== undefined && returnType !== Promise) {
-			returnTypeKey = getInfoByObjcet(returnType);
-            if(returnTypeKey === "Array"){
-                //store = [target, propertyKey, returnType]
-            }
-		}
-        console.log(returnTypeKey)
         return handler(target, propertyKey);
     }
 }
 
 setTimeout(() => {
-    let [target, propertyKey, returnType] = store
-    const ref = reflect(target[propertyKey]).returnType
-    const p = ref["_ref"]["p"]
-    console.log(p[0])
-    console.log(ref["_ref"]["p"][0]["e"])
-    // const ref= ReflectedClass.for(target).getMethod(propertyKey).returnType
-    // console.log(ref.as("array").elementType["_ref"])
-    // getInfoByObjcet(ref.as("array").elementType["_ref"]);
+    if(routerMap.size === 0) return;
+    routerMap.forEach((router) => {
+        const {method, path, clazz, target, propertyKey} = router;
+        const apiPath = new ApiPath(method, clazz, propertyKey);
+        const responseType = reflect(target[propertyKey]).returnType;
+        let realType = responseType["_ref"];
+        if(responseType.isPromise()){
+            realType = responseType["_ref"]["p"][0];
+        }
+        if(typeof realType === "function"){
+            if(/^class\s/.test(realType.toString())){
+                apiPath.addResponse("200", "OK", Item.fromType("$ref", realType.name));
+            }else{
+                apiPath.addResponse("200", "OK", Item.fromType(realType.name.toLowerCase()));
+            }
+        }else if(realType["TΦ"] === 'V'){
+            apiPath.addResponse("200", "OK");
+        }else if(realType["TΦ"] === 'O'){
+            apiPath.addResponse("200", "OK", Item.fromType("object"));
+        }else if(realType["TΦ"] === '~'){
+            apiPath.addResponse("200", "OK", Item.fromType("string"));
+        }else if(realType["TΦ"] === '['){
+            const deepRealType = realType["e"];
+            if(/^class\s/.test(deepRealType.toString())){
+                apiPath.addResponse("200", "OK", Item.fromArray("$ref", deepRealType.name));
+            }else{
+                apiPath.addResponse("200", "OK", Item.fromArray(deepRealType.name.toLowerCase()));
+            }
+        }else{
+            apiPath.addResponse("200", "OK", Item.fromType("string"));
+        }
+        console.log(JSON.stringify(apiPath.toDoc()));
+    });
 }, 1000);
 
-const reqQuery = (paramName: string) => toRequestParams(paramName, tsReqQuery);
-const reqForm = (paramName: string) => toRequestParams(paramName, tsReqForm);
-const reqParam = (paramName: string) => toRequestParams(paramName, tsReqParam);
 const getMapping = (value: string, responseClass?) => toMapping("get", value, tsGetMapping, responseClass);
 const postMapping = (value: string, responseClass?) => toMapping("post", value, tsPostMapping, responseClass);
 const requestMapping = (value: string, responseClass?) => toMapping("all", value, tsRequestMapping, responseClass);
@@ -129,32 +155,38 @@ class ApiPath {
         this.tagName = tagName;
     }
 
-    addResponse(statusCode: string, description: string, typeKey: typeKind, typeValue?: string){
+    addResponse(statusCode: string, description: string, itemObject?: Item){
+        if(!itemObject) {
+            this.responses[statusCode] = {
+                "description": description
+            }
+            return;
+        }
         this.responses[statusCode] = {
             "description": description,
             "content": {
                 "*/*": {
-                    "schema": getItem(typeKey, typeValue)
+                    "schema": itemObject.toDoc()
                 }
             }
         }
     }
 
-    addParameter(name: string, typeKey: typeKind, typeValue?: string){
+    addParameter(name: string, itemObject: Item){
         this.parameters.push({
             "name": name,
             "in": "query",
             "style": "form",
             "required": true,
-            "schema": getItem(typeKey, typeValue)
+            "schema": itemObject.toDoc()
         });
     }
 
-    addRequestBody(typeKey: typeKind, typeValue?: string){
+    addRequestBody(itemObject: Item){
         this.requestBody = {
             "content": {
                 "*/*": {
-                    "schema": getItem(typeKey, typeValue)
+                    "schema": itemObject.toDoc()
                 }
             }
         }
@@ -215,22 +247,44 @@ class ApiDocument {
     }
 }
 
-function getItem(typeKey: typeKind, typeValue?: string){
-    if(typeKey === "array"){
-        return {
-            "type": "array",
-            "items": {
-                "$ref": "#/components/schemas/" + typeValue
+class Item {
+    public typeKey: typeKind;
+    public isArray?: boolean = false;
+    public typeRef?: string;
+
+    static fromArray(typeKey: typeKind, typeRef?: string){
+        const item = new Item();
+        item.typeKey = typeKey;
+        item.isArray = true;
+        item.typeRef = typeRef;
+        return item;
+    }
+
+    static fromType(typeKey: typeKind, typeRef?: string){
+        const item = new Item();
+        item.typeKey = typeKey;
+        item.typeRef = typeRef;
+        return item;
+    }
+
+    public toDoc() {
+        let items = {};
+        if(this.typeKey === "$ref"){
+            items = {
+                "$ref": "#/components/schemas/" + this.typeRef
+            };
+        }else{
+            items = {
+                "type": this.typeKey
+            };
+        }
+        if(this.isArray){
+            items = {
+                "type": "array",
+                "items": items
             }
-        };
-    }else if(typeKey === "$ref"){
-        return {
-            "$ref": "#/components/schemas/" + typeValue
-        };
-    }else{
-        return {
-            "type": typeKey
-        };
+        }
+        return items;
     }
 }
 
