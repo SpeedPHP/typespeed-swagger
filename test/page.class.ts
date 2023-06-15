@@ -13,9 +13,9 @@ export default class Page {
     }
 
     @getMapping("/request/query")
-    async testQuery(req, res, @reqQuery("id") id: number): Promise<DataC> {
+    async testQuery(req, res, @reqQuery("id") id: number): Promise<DataC[]> {
         log("id: " + id);
-        return Promise.resolve(new DataC("value to C"));
+        return Promise.resolve([new DataC("value to C")]);
     }
 
     @postMapping("/request/body")
@@ -25,14 +25,15 @@ export default class Page {
     }
 
     @postMapping("/request/form")
-    testForm(@res res, @reqForm("name") name: string): void {
+    testForm(@res res, @reqForm("name") name: string): string[] {
         log("form: " + JSON.stringify(name));
         res.send("test form");
+        return ["eee"]
     }
 
     @getMapping("/request/param/:id")
-    testParam(@res res, @reqParam("id") id: number) : DataA {
+    testParam(@res res, @reqParam("id") id: number) : DataA[] {
         log("id: " + id);
-        return new DataA(100, "A to B", new DataB(200, new DataC("AB to C")), [new DataC("A to C")]);
+        return [new DataA(100, "A to B", new DataB(200, new DataC("AB to C")), [new DataC("A to C")])];
     }
 }
