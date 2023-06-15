@@ -9,11 +9,19 @@ type methodType = "post" | "get" | "put" | "delete" | "options" | "head" | "patc
 type methodMappingType = "post" | "get" | "all";
 type typeKind = "string" | "number" | "boolean" | "$ref" | "object";
 type routerType = { method: methodMappingType, path: string, clazz: string, target: any, propertyKey: string };
+type paramType = { clazz: string, target: any, propertyKey: string, parameterIndex: number };
 
 const routerMap: Map<string, routerType> = new Map();
-const paramMap: Map<string, object> = new Map();
+const paramMap: Map<string, paramType> = new Map();
 
 function reqBody(target: any, propertyKey: string, parameterIndex: number) {
+    const key = [target.constructor.name, propertyKey].toString();
+    paramMap.set(key, {
+        "clazz": target.constructor.name,
+        "target": target,
+        "propertyKey": propertyKey,
+        "parameterIndex": parameterIndex
+    });
     return tsReqBody(target, propertyKey, parameterIndex);
 }
 
@@ -63,43 +71,112 @@ function toMapping(method: methodMappingType, path: string, mappingMethod: Funct
 
 setTimeout(() => {
     if(routerMap.size === 0) return;
-    routerMap.forEach((router) => {
-        const {method, path, clazz, target, propertyKey} = router;
-        const apiPath = new ApiPath(method, clazz, propertyKey);
-        const responseType = reflect(target[propertyKey]).returnType;
-        let realType = responseType["_ref"];
-        if(responseType.isPromise()){
-            realType = responseType["_ref"]["p"][0];
-        }
-        if(typeof realType === "function"){
-            if(/^class\s/.test(realType.toString())){
-                apiPath.addResponse("200", "OK", Item.fromType("$ref", realType.name));
-            }else{
-                apiPath.addResponse("200", "OK", Item.fromType(realType.name.toLowerCase()));
+    routerMap.forEach((router, key) => {
+        // const {method, path, clazz, target, propertyKey} = router;
+        // const apiPath = new ApiPath(method, clazz, propertyKey);
+        // const responseType = reflect(target[propertyKey]).returnType;
+        // let realType = responseType["_ref"];
+        // if(responseType.isPromise()){
+        //     realType = responseType["_ref"]["p"][0];
+        // }
+        // if(typeof realType === "function"){
+        //     if(/^class\s/.test(realType.toString())){
+        //         apiPath.addResponse("200", "OK", Item.fromType("$ref", realType.name));
+        //     }else{
+        //         apiPath.addResponse("200", "OK", Item.fromType(realType.name.toLowerCase()));
+        //     }
+        // }else if(realType["TΦ"] === 'V'){
+        //     apiPath.addResponse("200", "OK");
+        // }else if(realType["TΦ"] === 'O'){
+        //     apiPath.addResponse("200", "OK", Item.fromType("object"));
+        // }else if(realType["TΦ"] === '~'){
+        //     apiPath.addResponse("200", "OK", Item.fromType("string"));
+        // }else if(realType["TΦ"] === '['){
+        //     const deepRealType = realType["e"];
+        //     if(/^class\s/.test(deepRealType.toString())){
+        //         apiPath.addResponse("200", "OK", Item.fromArray("$ref", deepRealType.name));
+        //     }else{
+        //         apiPath.addResponse("200", "OK", Item.fromArray(deepRealType.name.toLowerCase()));
+        //     }
+        // }else{
+        //     apiPath.addResponse("200", "OK", Item.fromType("string"));
+        // }
+        const apiPath = getApiPath(router);
+        if(paramMap.has(key)){
+            const { clazz, target, propertyKey, parameterIndex } = paramMap.get(key);
+            const paramType = reflect(target[propertyKey]).parameters[parameterIndex];
+            const realType = paramType.type["_ref"];
+            console.log(realType)
+            if(typeof realType === "function"){
+                if(/^class\s/.test(realType.toString())){
+                    apiPath.addRequestBody(Item.fromType("$ref", realType.name));
+                }else{
+                    apiPath.addRequestBody(Item.fromType(realType.name.toLowerCase()));
+                }
+            }else if(realType["TΦ"] === '['){
+                const deepRealType = realType["e"];
+                if(/^class\s/.test(deepRealType.toString())){
+                    apiPath.addRequestBody(Item.fromArray("$ref", deepRealType.name));
+                }else{
+                    apiPath.addRequestBody(Item.fromArray(deepRealType.name.toLowerCase()));
+                }
+            }else if(realType["TΦ"] === 'O'){
+                apiPath.addRequestBody(Item.fromType("object"));
+            }else if(realType["TΦ"] === '~'){
+                apiPath.addRequestBody(Item.fromType("string"));
             }
-        }else if(realType["TΦ"] === 'V'){
-            apiPath.addResponse("200", "OK");
-        }else if(realType["TΦ"] === 'O'){
-            apiPath.addResponse("200", "OK", Item.fromType("object"));
-        }else if(realType["TΦ"] === '~'){
-            apiPath.addResponse("200", "OK", Item.fromType("string"));
-        }else if(realType["TΦ"] === '['){
-            const deepRealType = realType["e"];
-            if(/^class\s/.test(deepRealType.toString())){
-                apiPath.addResponse("200", "OK", Item.fromArray("$ref", deepRealType.name));
-            }else{
-                apiPath.addResponse("200", "OK", Item.fromArray(deepRealType.name.toLowerCase()));
-            }
-        }else{
-            apiPath.addResponse("200", "OK", Item.fromType("string"));
+            console.log(JSON.stringify(apiPath.toDoc()));
         }
-        console.log(JSON.stringify(apiPath.toDoc()));
+        
     });
 }, 1000);
 
 const getMapping = (value: string, responseClass?) => toMapping("get", value, tsGetMapping, responseClass);
 const postMapping = (value: string, responseClass?) => toMapping("post", value, tsPostMapping, responseClass);
 const requestMapping = (value: string, responseClass?) => toMapping("all", value, tsRequestMapping, responseClass);
+
+function handleRealType(realType: any, callback: Function) {
+    if(typeof realType === "function"){
+        if(/^class\s/.test(realType.toString())){
+            callback(Item.fromType("$ref", realType.name));
+        }else{
+            callback(Item.fromType(realType.name.toLowerCase()));
+        }
+    }else if(realType["TΦ"] === 'V'){
+        callback();
+    }else if(realType["TΦ"] === 'O'){
+        callback(Item.fromType("object"));
+    }else if(realType["TΦ"] === '~'){
+        callback(Item.fromType("string"));
+    }else if(realType["TΦ"] === '['){
+        const deepRealType = realType["e"];
+        if(/^class\s/.test(deepRealType.toString())){
+            callback(Item.fromArray("$ref", deepRealType.name));
+        }else{
+            callback(Item.fromArray(deepRealType.name.toLowerCase()));
+        }
+    }else{
+        callback(Item.fromType("string"));
+    }
+}
+
+function getApiPath(router: routerType) : ApiPath {
+    const {method, path, clazz, target, propertyKey} = router;
+    const apiPath = new ApiPath(method, clazz, propertyKey);
+    const responseType = reflect(target[propertyKey]).returnType;
+    let realType = responseType["_ref"];
+    if(responseType.isPromise()){
+        realType = responseType["_ref"]["p"][0];
+    }
+    handleRealType(realType, function(item?: Item){
+        if(item === undefined) {
+            apiPath.addResponse("200", "OK");
+        }else{
+            apiPath.addResponse("200", "OK", item);
+        }
+    })
+    return apiPath;
+}
 
 function getInfoByObjcet(target): string {
 	const ref = reflect(target)

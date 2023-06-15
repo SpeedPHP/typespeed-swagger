@@ -67,25 +67,37 @@ export default class Page {
     }
 
     @postMapping("/request/body")
-    testBody(@res res, @reqBody body: object): DataB {
+    testBody(@res res, @reqBody body: DataB): DataB {
         log("body: " + JSON.stringify(body));
         return new DataB(100, new DataC("B to C"));
     }
 
     @postMapping("/request/stringvalue")
-    testValueString(@res res, @reqBody body: object): string {
+    testValueString(@res res, @reqBody body: DataB[]): string {
         log("body: " + JSON.stringify(body));
         return "test string value";
     }
 
     @postMapping("/request/stringany")
-    testValueAny(@res res, @reqBody body: object): any {
+    testValueAny(@res res, @reqBody body: string): any {
         log("body: " + JSON.stringify(body));
         return "test string value";
     }
 
     @postMapping("/request/stringvoid")
-    testValueVoid(@res res, @reqBody body: object): void {
+    testValueVoid(@res res, @reqBody body: any): void {
+        log("body: " + JSON.stringify(body));
+        res.send("test string value");
+    }
+
+    @postMapping("/request/stringobjcet")
+    testValueObject(@res res, @reqBody body: object): void {
+        log("body: " + JSON.stringify(body));
+        res.send("test string value");
+    }
+
+    @postMapping("/request/stringobjcetstring")
+    testValueObjectString(@res res, @reqBody body: {}): void {
         log("body: " + JSON.stringify(body));
         res.send("test string value");
     }
