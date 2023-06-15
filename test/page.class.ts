@@ -13,7 +13,7 @@ export default class Page {
     }
 
     @getMapping("/request/query")
-    async testQuery(req, res, @reqQuery id: number): Promise<DataC[]> {
+    async testQuery(req, res, @reqQuery id: number, @reqParam name:string): Promise<DataC[]> {
         log("id: " + id);
         return Promise.resolve([new DataC("value to C")]);
     }

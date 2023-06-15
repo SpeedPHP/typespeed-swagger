@@ -3,21 +3,23 @@ import {
     getMapping as tsGetMapping, postMapping as tsPostMapping, requestMapping as tsRequestMapping
 } from 'typespeed';
 import 'reflect-metadata';
-import { reflect, ReflectedClass, ReflectedTypeRef, ReflectedClassRef } from 'typescript-rtti';
+import { reflect } from 'typescript-rtti';
 import * as swaggerUi from "swagger-ui-express";
-type methodType = "post" | "get" | "put" | "delete" | "options" | "head" | "patch" | "all";
-type methodMappingType = "post" | "get" | "all";
-type typeKind = "string" | "number" | "boolean" | "$ref" | "object";
-type routerType = { method: methodMappingType, path: string, clazz: string, target: any, propertyKey: string };
-type paramType = { clazz: string, target: any, propertyKey: string, parameterIndex: number };
+type MethodType = "post" | "get" | "put" | "delete" | "options" | "head" | "patch" | "all";
+type MethodMappingType = "post" | "get" | "all";
+type TypeKind = "string" | "number" | "boolean" | "$ref" | "object";
+type RouterType = { method: MethodMappingType, clazz: string, target: any, propertyKey: string };
+type ParamMapType= { paramKind: ParamIn, target: any, propertyKey: string, parameterIndex: number, paramName?: string };
+type RequestBodyMapType = { target: any, propertyKey: string, parameterIndex: number };
+type ParamIn = "query" | "path" | "formData";
 
-const routerMap: Map<string, routerType> = new Map();
-const paramMap: Map<string, paramType> = new Map();
+const routerMap: Map<string, RouterType> = new Map();
+const requestBodyMap: Map<string, RequestBodyMapType> = new Map();
+const requestParamMap: Map<string, ParamMapType[]> = new Map();
 
 function reqBody(target: any, propertyKey: string, parameterIndex: number) {
     const key = [target.constructor.name, propertyKey].toString();
-    paramMap.set(key, {
-        "clazz": target.constructor.name,
+    requestBodyMap.set(key, {
         "target": target,
         "propertyKey": propertyKey,
         "parameterIndex": parameterIndex
@@ -26,16 +28,38 @@ function reqBody(target: any, propertyKey: string, parameterIndex: number) {
 }
 
 function reqParam(target: any, propertyKey: string, parameterIndex: number) {
+    const key = [target.constructor.name, propertyKey].toString();
+    if(!requestParamMap.has[key]){
+        requestParamMap.set(key, new Array());
+    }
+    requestParamMap.get(key).push({
+        paramKind: "path", "target": target, "propertyKey": propertyKey,"parameterIndex": parameterIndex
+    })
     return tsReqParam(target, propertyKey, parameterIndex);
 }
 
 function reqQuery(target: any, propertyKey: string, parameterIndex: number) {
+    const key = [target.constructor.name, propertyKey].toString();
+    if(!requestParamMap.has[key]){
+        requestParamMap.set(key, new Array());
+    }
+    requestParamMap.get(key).push({
+        paramKind: "query", "target": target, "propertyKey": propertyKey,"parameterIndex": parameterIndex
+    })
     return tsReqQuery(target, propertyKey, parameterIndex);
 }
 
 function reqForm(paramName: string) {
     const handler = tsReqForm(paramName);
     return (target: any, propertyKey: string, parameterIndex: number) => {
+        const key = [target.constructor.name, propertyKey].toString();
+        if(!requestParamMap.has[key]){
+            requestParamMap.set(key, new Array());
+        }
+        requestParamMap.get(key).push({
+            paramKind: "formData", "target": target, "propertyKey": propertyKey,"parameterIndex": parameterIndex,
+            "paramName": paramName
+        })
         return handler(target, propertyKey, parameterIndex);
     }
 }
@@ -52,14 +76,13 @@ function swaggerMiddleware(app: any, options?: {}) {
     );
 }
 
-function toMapping(method: methodMappingType, path: string, mappingMethod: Function, responseClass?: any) {
+function toMapping(method: MethodMappingType, path: string, mappingMethod: Function, responseClass?: any) {
     const handler = mappingMethod(path);
     return (target: any, propertyKey: string) => {
         const key = [target.constructor.name, propertyKey].toString();
         if(!routerMap.has(key)){
             routerMap.set(key, {
                 "method": method,
-                "path": path,
                 "clazz": target.constructor.name,
                 "target": target,
                 "propertyKey": propertyKey
@@ -72,62 +95,22 @@ function toMapping(method: methodMappingType, path: string, mappingMethod: Funct
 setTimeout(() => {
     if(routerMap.size === 0) return;
     routerMap.forEach((router, key) => {
-        // const {method, path, clazz, target, propertyKey} = router;
-        // const apiPath = new ApiPath(method, clazz, propertyKey);
-        // const responseType = reflect(target[propertyKey]).returnType;
-        // let realType = responseType["_ref"];
-        // if(responseType.isPromise()){
-        //     realType = responseType["_ref"]["p"][0];
-        // }
-        // if(typeof realType === "function"){
-        //     if(/^class\s/.test(realType.toString())){
-        //         apiPath.addResponse("200", "OK", Item.fromType("$ref", realType.name));
-        //     }else{
-        //         apiPath.addResponse("200", "OK", Item.fromType(realType.name.toLowerCase()));
-        //     }
-        // }else if(realType["TΦ"] === 'V'){
-        //     apiPath.addResponse("200", "OK");
-        // }else if(realType["TΦ"] === 'O'){
-        //     apiPath.addResponse("200", "OK", Item.fromType("object"));
-        // }else if(realType["TΦ"] === '~'){
-        //     apiPath.addResponse("200", "OK", Item.fromType("string"));
-        // }else if(realType["TΦ"] === '['){
-        //     const deepRealType = realType["e"];
-        //     if(/^class\s/.test(deepRealType.toString())){
-        //         apiPath.addResponse("200", "OK", Item.fromArray("$ref", deepRealType.name));
-        //     }else{
-        //         apiPath.addResponse("200", "OK", Item.fromArray(deepRealType.name.toLowerCase()));
-        //     }
-        // }else{
-        //     apiPath.addResponse("200", "OK", Item.fromType("string"));
-        // }
-        const apiPath = getApiPath(router);
-        if(paramMap.has(key)){
-            const { clazz, target, propertyKey, parameterIndex } = paramMap.get(key);
-            const paramType = reflect(target[propertyKey]).parameters[parameterIndex];
-            const realType = paramType.type["_ref"];
-            console.log(realType)
-            if(typeof realType === "function"){
-                if(/^class\s/.test(realType.toString())){
-                    apiPath.addRequestBody(Item.fromType("$ref", realType.name));
-                }else{
-                    apiPath.addRequestBody(Item.fromType(realType.name.toLowerCase()));
-                }
-            }else if(realType["TΦ"] === '['){
-                const deepRealType = realType["e"];
-                if(/^class\s/.test(deepRealType.toString())){
-                    apiPath.addRequestBody(Item.fromArray("$ref", deepRealType.name));
-                }else{
-                    apiPath.addRequestBody(Item.fromArray(deepRealType.name.toLowerCase()));
-                }
-            }else if(realType["TΦ"] === 'O'){
-                apiPath.addRequestBody(Item.fromType("object"));
-            }else if(realType["TΦ"] === '~'){
-                apiPath.addRequestBody(Item.fromType("string"));
-            }
+        const apiPath = createApiPath(router);
+        if(requestBodyMap.has(key)){
+            handleRequestBody(apiPath, requestBodyMap.get(key));
+            //console.log(JSON.stringify(apiPath.toDoc()));
+        }
+        if(requestParamMap.has(key)){
+            const params = requestParamMap.get(key);
+            params.forEach(param => {
+                const paramType = reflect(param.target[param.propertyKey]).parameters[param.parameterIndex];
+                const realType = paramType.type["_ref"];
+                handleRealType(realType, (item: ApiItem) => {
+                    apiPath.addParameter(param.paramKind, param.paramName || paramType.name, item);
+                })
+            });
             console.log(JSON.stringify(apiPath.toDoc()));
         }
-        
     });
 }, 1000);
 
@@ -138,37 +121,46 @@ const requestMapping = (value: string, responseClass?) => toMapping("all", value
 function handleRealType(realType: any, callback: Function) {
     if(typeof realType === "function"){
         if(/^class\s/.test(realType.toString())){
-            callback(Item.fromType("$ref", realType.name));
+            callback(ApiItem.fromType("$ref", realType.name));
         }else{
-            callback(Item.fromType(realType.name.toLowerCase()));
+            callback(ApiItem.fromType(realType.name.toLowerCase()));
         }
     }else if(realType["TΦ"] === 'V'){
         callback();
     }else if(realType["TΦ"] === 'O'){
-        callback(Item.fromType("object"));
+        callback(ApiItem.fromType("object"));
     }else if(realType["TΦ"] === '~'){
-        callback(Item.fromType("string"));
+        callback(ApiItem.fromType("string"));
     }else if(realType["TΦ"] === '['){
         const deepRealType = realType["e"];
         if(/^class\s/.test(deepRealType.toString())){
-            callback(Item.fromArray("$ref", deepRealType.name));
+            callback(ApiItem.fromArray("$ref", deepRealType.name));
         }else{
-            callback(Item.fromArray(deepRealType.name.toLowerCase()));
+            callback(ApiItem.fromArray(deepRealType.name.toLowerCase()));
         }
     }else{
-        callback(Item.fromType("string"));
+        callback(ApiItem.fromType("string"));
     }
 }
 
-function getApiPath(router: routerType) : ApiPath {
-    const {method, path, clazz, target, propertyKey} = router;
+function handleRequestBody(apiPath: ApiPath, bodyParam: RequestBodyMapType) {
+    const { target, propertyKey, parameterIndex } = bodyParam;
+    const paramType = reflect(target[propertyKey]).parameters[parameterIndex];
+    const realType = paramType.type["_ref"];
+    handleRealType(realType, (item: ApiItem) => {
+        apiPath.addRequestBody(item);
+    })
+}
+
+function createApiPath(router: RouterType) : ApiPath {
+    const {method, clazz, target, propertyKey} = router;
     const apiPath = new ApiPath(method, clazz, propertyKey);
     const responseType = reflect(target[propertyKey]).returnType;
     let realType = responseType["_ref"];
     if(responseType.isPromise()){
         realType = responseType["_ref"]["p"][0];
     }
-    handleRealType(realType, function(item?: Item){
+    handleRealType(realType, (item?: ApiItem) => {
         if(item === undefined) {
             apiPath.addResponse("200", "OK");
         }else{
@@ -216,23 +208,21 @@ class ApiSchema {
     }
 }
 
-
-
 class ApiPath {
     public tagName: string;
     public summary: string;
-    public method: methodType;
+    public method: MethodType;
     public responses: object = {};
     public parameters: object[] = [];
     public requestBody: object;
 
-    constructor(method: methodType, tagName: string, summary: string){
+    constructor(method: MethodType, tagName: string, summary: string){
         this.method = method;
         this.summary = summary;
         this.tagName = tagName;
     }
 
-    addResponse(statusCode: string, description: string, itemObject?: Item){
+    addResponse(statusCode: string, description: string, itemObject?: ApiItem){
         if(!itemObject) {
             this.responses[statusCode] = {
                 "description": description
@@ -249,17 +239,17 @@ class ApiPath {
         }
     }
 
-    addParameter(name: string, itemObject: Item){
+    addParameter(paramIn: "query" | "path" | "formData", name: string, itemObject: ApiItem){
         this.parameters.push({
             "name": name,
-            "in": "query",
+            "in": paramIn,
             "style": "form",
             "required": true,
             "schema": itemObject.toDoc()
         });
     }
 
-    addRequestBody(itemObject: Item){
+    addRequestBody(itemObject: ApiItem){
         this.requestBody = {
             "content": {
                 "*/*": {
@@ -324,21 +314,21 @@ class ApiDocument {
     }
 }
 
-class Item {
-    public typeKey: typeKind;
+class ApiItem {
+    public typeKey: TypeKind;
     public isArray?: boolean = false;
     public typeRef?: string;
 
-    static fromArray(typeKey: typeKind, typeRef?: string){
-        const item = new Item();
+    static fromArray(typeKey: TypeKind, typeRef?: string){
+        const item = new ApiItem();
         item.typeKey = typeKey;
         item.isArray = true;
         item.typeRef = typeRef;
         return item;
     }
 
-    static fromType(typeKey: typeKind, typeRef?: string){
-        const item = new Item();
+    static fromType(typeKey: TypeKind, typeRef?: string){
+        const item = new ApiItem();
         item.typeKey = typeKey;
         item.typeRef = typeRef;
         return item;
