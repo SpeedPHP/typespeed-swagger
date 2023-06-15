@@ -3,7 +3,7 @@ import {
     getMapping as tsGetMapping, postMapping as tsPostMapping, requestMapping as tsRequestMapping
 } from 'typespeed';
 import 'reflect-metadata';
-import { reflect } from 'typescript-rtti';
+import { reflect, ReflectedClassRef } from 'typescript-rtti';
 import * as swaggerUi from "swagger-ui-express";
 type MethodType = "post" | "get" | "put" | "delete" | "options" | "head" | "patch" | "all";
 type MethodMappingType = "post" | "get" | "all";
@@ -13,6 +13,7 @@ type ParamMapType= { paramKind: ParamIn, target: any, propertyKey: string, param
 type RequestBodyMapType = { target: any, propertyKey: string, parameterIndex: number };
 type ParamIn = "query" | "path" | "formData";
 
+const schemaMap: Map<string, ApiSchema> = new Map();
 const routerMap: Map<string, RouterType> = new Map();
 const requestBodyMap: Map<string, RequestBodyMapType> = new Map();
 const requestParamMap: Map<string, ParamMapType[]> = new Map();
@@ -94,24 +95,23 @@ function toMapping(method: MethodMappingType, path: string, mappingMethod: Funct
 
 setTimeout(() => {
     if(routerMap.size === 0) return;
+    const apiDocument = new ApiDocument();
     routerMap.forEach((router, key) => {
         const apiPath = createApiPath(router);
         if(requestBodyMap.has(key)){
             handleRequestBody(apiPath, requestBodyMap.get(key));
-            //console.log(JSON.stringify(apiPath.toDoc()));
         }
         if(requestParamMap.has(key)){
-            const params = requestParamMap.get(key);
-            params.forEach(param => {
-                const paramType = reflect(param.target[param.propertyKey]).parameters[param.parameterIndex];
-                const realType = paramType.type["_ref"];
-                handleRealType(realType, (item: ApiItem) => {
-                    apiPath.addParameter(param.paramKind, param.paramName || paramType.name, item);
-                })
-            });
-            console.log(JSON.stringify(apiPath.toDoc()));
+            handleRequestParams(apiPath, requestParamMap.get(key));
         }
+        apiDocument.addPath(router.clazz, apiPath);
+        
     });
+    schemaMap.forEach((schema) => {
+        apiDocument.addSchema(schema);
+    });
+    console.log(JSON.stringify(apiDocument.toDoc()));
+    
 }, 1000);
 
 const getMapping = (value: string, responseClass?) => toMapping("get", value, tsGetMapping, responseClass);
@@ -121,6 +121,7 @@ const requestMapping = (value: string, responseClass?) => toMapping("all", value
 function handleRealType(realType: any, callback: Function) {
     if(typeof realType === "function"){
         if(/^class\s/.test(realType.toString())){
+            handleComponent(realType);
             callback(ApiItem.fromType("$ref", realType.name));
         }else{
             callback(ApiItem.fromType(realType.name.toLowerCase()));
@@ -134,6 +135,7 @@ function handleRealType(realType: any, callback: Function) {
     }else if(realType["TΦ"] === '['){
         const deepRealType = realType["e"];
         if(/^class\s/.test(deepRealType.toString())){
+            handleComponent(deepRealType);
             callback(ApiItem.fromArray("$ref", deepRealType.name));
         }else{
             callback(ApiItem.fromArray(deepRealType.name.toLowerCase()));
@@ -141,6 +143,16 @@ function handleRealType(realType: any, callback: Function) {
     }else{
         callback(ApiItem.fromType("string"));
     }
+}
+
+function handleRequestParams(apiPath: ApiPath, params: ParamMapType[]) {
+    params.forEach(param => {
+        const paramType = reflect(param.target[param.propertyKey]).parameters[param.parameterIndex];
+        const realType = paramType.type["_ref"];
+        handleRealType(realType, (item: ApiItem) => {
+            apiPath.addParameter(param.paramKind, param.paramName || paramType.name, item);
+        })
+    });
 }
 
 function handleRequestBody(apiPath: ApiPath, bodyParam: RequestBodyMapType) {
@@ -170,21 +182,19 @@ function createApiPath(router: RouterType) : ApiPath {
     return apiPath;
 }
 
-function getInfoByObjcet(target): string {
+function handleComponent(target) {
 	const ref = reflect(target)
 	const obj = new target;
+    const apiSchema = new ApiSchema(target.name);
 	Object.getOwnPropertyNames(obj).forEach(k => {
 		const params = ref.getParameter(k)
-        if(params && params.type && params.type.ref){
-            console.log(k, params.type.ref)
-            const relatObj = params.type
-            if(/^class\s/.test(relatObj.ref)){
-                getInfoByObjcet(relatObj.class)
-            }
+        if(params && params.type && params.type["_ref"]){
+            handleRealType(params.type["_ref"], (item: ApiItem) => {
+                apiSchema.addProperty(k, item);
+            });
         }
 	})
-
-    return target.name;
+    schemaMap.set(target.name, apiSchema);
 }
 
 class ApiSchema {
@@ -195,8 +205,8 @@ class ApiSchema {
         this.title = title;
     }
 
-    addProperty(name: string, item: object){
-        this.properties[name] = item
+    addProperty(name: string, item: ApiItem){
+        this.properties[name] = item.toDoc();
     }
 
     toDoc() {
