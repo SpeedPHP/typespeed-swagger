@@ -8,7 +8,7 @@ class Main {
     public server : ServerFactory;
 
     public main(){
-        swaggerMiddleware(this.server.app);
+        swaggerMiddleware(this.server.app, null, "./test/package.json");
         this.server.start(8082);
     }
 }
