@@ -187,7 +187,10 @@ function createApiPath(router: RouterType): ApiPath {
     const { method, clazz, target, propertyKey } = router;
     const apiPath = new ApiPath(method, clazz, propertyKey);
     const responseType = reflect(target[propertyKey]).returnType;
-    if(!responseType || responseType["_ref"]) return apiPath;
+    if(!responseType || responseType["_ref"]){
+        apiPath.addResponse("200", "OK");
+        return apiPath;
+    }
     let realType = responseType["_ref"];
     if (responseType.isPromise()) {
         realType = responseType["_ref"]["p"][0];
