@@ -5,17 +5,61 @@
 
 **The Swagger plugin for the TypeSpeed framework.**
 
+- **NO NEED** to add redundant annotations of methods and variables on existing web applications. 
+- **NO NEED** to add redundant definitions to any entity classes.
+- **Simply** modify the import path of some decorators, then the application will have a complete and available swagger document page.
+- Use advanced reflection ([typescript-rtti](https://github.com/typescript-rtti/typescript-rtti)) to get all the type, no extra markup required.
+
 ### Install
 
 ```
-npm install typespeed-swagger
+npm install typespeed-swagger typescript-rtti reflect-metadata
 ```
 
-### Usage
+### How To Use
 
-1. Modify the imports of the following decorators in the original TypeSpeed project and replace them with the path from typespeed-swagger. The decorators that need to be replaced are: `@getMapping`, `@postMapping`, `@requestMapping`, `@reqBody`, `@reqQuery`, `@reqForm`, `@reqParam`.
-2. The three *Mapping decorators have a second optional parameter. If the response object is a Promise, please put the return type in the second parameter.
-3. Please put the `swaggerMiddleware` into TypeSpeed's middleware list so that it can support Swagger web page access.
+**First** modify the import path of these decorators from typespeed to typespeed-swagger: `@getMapping`, `@postMapping`, `@requestMapping`, `@reqBody`, `@reqQuery`, `@reqForm`, `@reqParam`.
+
+For example:
+```
+import { log, component, getMapping, reqQuery } from "typespeed";
+```
+Would change to:
+```
+import { log, component } from "typespeed";
+import { getMapping, reqQuery } from "typespeed-swagger";
+```
+
+**Second**, add swagger middleware to the main.ts entry file, as follows:
+```
+import { app, log, autoware, ServerFactory } from "typespeed";
+import { swaggerMiddleware } from "typespeed-swagger";;
+
+@app
+class Main {
+
+    @autoware
+    public server: ServerFactory;
+
+    public main() {
+        swaggerMiddleware(this.server.app, { path: "/docs", "allow-ip": ["127.0.0.1"]}, "./package.json");
+        this.server.start(8081);
+    }
+}
+```
+
+After that, start the application, visit http://localhost:8081/docs, and you can see the swagger page.
+
+### Configuration
+
+Typespeed-swagger has three configurations, which are the last two optional parameters of the `swaggerMiddleware` function:
+
+- The `path` property of the second parameter is the address configuration of the swagger page, and the default is `/docs`.
+
+- The `allow-ip` property of the second parameter provides IP restrictions for secure access to the swagger page. Only the client IPs in the `allow-ip` array can access the page normally. Default is `["127.0.0.1", "::1"]`.
+
+- The third parameter is the `package.json` file path of the project. Typespeed-swagger use the package.json file and read its name and version information for swagger page.
+
 
 ### Link
 
