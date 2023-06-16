@@ -26,7 +26,8 @@ declare const requestMapping: (value: string) => (target: any, propertyKey: stri
  * Swagger UI 中间件装配函数
  * @param app Express 实例
  * @param options Swagger UI 配置项
+ * @param packageJsonPath package.json 文件路径，方便导入项目信息
  */
-declare function swaggerMiddleware(app: any, options?: {}) : void;
+declare function swaggerMiddleware(app: any, options?: {}, packageJsonPath?: string) : void;
 
 export { reqBody, reqQuery, reqForm, reqParam, getMapping, postMapping, requestMapping, swaggerMiddleware };

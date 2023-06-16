@@ -204,6 +204,8 @@ __RΦ.m("rt:t", () => __RΦ.a(24))(handleRealType);
 function handleRequestParams(apiPath, params) {
     params.forEach(__RΦ.f(param => {
         const paramType = (0, typescript_rtti_1.reflect)(param.target[param.propertyKey], { TΦ: "c", t: void 0, p: [__RΦ.a(1)], r: void 0, tp: [] }).parameters[param.parameterIndex];
+        if (!paramType || !paramType.type || paramType.type["_ref"])
+            return;
         const realType = paramType.type["_ref"];
         handleRealType(realType, __RΦ.f((item) => {
             apiPath.addParameter(param.paramKind, param.paramName || paramType.name, item);
@@ -216,6 +218,8 @@ __RΦ.m("rt:t", () => __RΦ.a(24))(handleRequestParams);
 function handleRequestBody(apiPath, bodyParam) {
     const { target, propertyKey, parameterIndex } = bodyParam;
     const paramType = (0, typescript_rtti_1.reflect)(target[propertyKey], { TΦ: "c", t: void 0, p: [__RΦ.a(1)], r: void 0, tp: [] }).parameters[parameterIndex];
+    if (!paramType || !paramType.type || paramType.type["_ref"])
+        return;
     const realType = paramType.type["_ref"];
     handleRealType(realType, __RΦ.f((item) => {
         apiPath.addRequestBody(item);
@@ -228,6 +232,8 @@ function createApiPath(router) {
     const { method, clazz, target, propertyKey } = router;
     const apiPath = new ApiPath(method, clazz, propertyKey);
     const responseType = (0, typescript_rtti_1.reflect)(target[propertyKey], { TΦ: "c", t: void 0, p: [__RΦ.a(1)], r: void 0, tp: [] }).returnType;
+    if (!responseType || responseType["_ref"])
+        return apiPath;
     let realType = responseType["_ref"];
     if (responseType.isPromise()) {
         realType = responseType["_ref"]["p"][0];
