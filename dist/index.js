@@ -16,7 +16,7 @@ const __RΦ = { m: (k, v) => (t, ...a) => t && Reflect.metadata ? Reflect.metada
             __RΦ.t[id] = t = l;
         }
         return t;
-    }, t: { [1]: { RΦ: t => ({ TΦ: "~" }) }, [15]: { LΦ: t => String }, [16]: { LΦ: t => Number }, [24]: { RΦ: t => ({ TΦ: "V" }) }, [48606]: { RΦ: t => ({ TΦ: "F", r: __RΦ.a(24), p: [{ n: "target", t: () => __RΦ.a(1), b: void 0, v: null }, { n: "propertyKey", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "parameterIndex", t: () => __RΦ.a(16), b: void 0, v: null }], f: "" }) }, [48607]: { RΦ: t => ({ TΦ: "O", m: [{ n: "path", f: "", t: __RΦ.a(15) }, { n: "allow-ip", f: "", t: __RΦ.a(94) }] }) }, [94]: { RΦ: t => ({ TΦ: "[", e: __RΦ.a(15) }) }, [4]: { RΦ: t => ({ TΦ: "~" }) }, [48486]: { RΦ: t => ({ TΦ: "|", t: [__RΦ.a(1721), __RΦ.a(26047), __RΦ.a(26891)] }) }, [1721]: { LΦ: t => "all" }, [26047]: { LΦ: t => "get" }, [26891]: { LΦ: t => "post" }, [66]: { LΦ: t => Function }, [48620]: { RΦ: t => ({ TΦ: "F", r: __RΦ.a(1), p: [{ n: "target", t: () => __RΦ.a(1), b: void 0, v: null }, { n: "propertyKey", t: () => __RΦ.a(15), b: void 0, v: null }], f: "" }) }, [30]: { LΦ: t => Object }, [48704]: { TΦ: "5", name: "ApiPath" }, [48592]: { RΦ: t => ({ TΦ: "[", e: __RΦ.a(48495) }) }, [48495]: { RΦ: t => ({ TΦ: "O", m: [{ n: "paramKind", f: "", t: __RΦ.a(48494) }, { n: "target", f: "", t: __RΦ.a(1) }, { n: "propertyKey", f: "", t: __RΦ.a(15) }, { n: "parameterIndex", f: "", t: __RΦ.a(16) }, { n: "paramName", f: "?", t: __RΦ.a(15) }] }) }, [48494]: { RΦ: t => ({ TΦ: "|", t: [__RΦ.a(1903), __RΦ.a(4475), __RΦ.a(48491)] }) }, [1903]: { LΦ: t => "formData" }, [4475]: { LΦ: t => "path" }, [48491]: { LΦ: t => "query" }, [48699]: { TΦ: "5", name: "ApiItem" }, [48496]: { RΦ: t => ({ TΦ: "O", m: [{ n: "target", f: "", t: __RΦ.a(1) }, { n: "propertyKey", f: "", t: __RΦ.a(15) }, { n: "parameterIndex", f: "", t: __RΦ.a(16) }] }) }, [48490]: { RΦ: t => ({ TΦ: "O", m: [{ n: "method", f: "", t: __RΦ.a(48486) }, { n: "clazz", f: "", t: __RΦ.a(15) }, { n: "target", f: "", t: __RΦ.a(1) }, { n: "propertyKey", f: "", t: __RΦ.a(15) }, { n: "path", f: "", t: __RΦ.a(15) }] }) }, [48827]: { RΦ: t => ({ TΦ: "O", m: [{ n: "title", f: "", t: __RΦ.a(15) }, { n: "type", f: "", t: __RΦ.a(15) }, { n: "properties", f: "", t: __RΦ.a(30) }] }) }, [48485]: { RΦ: t => ({ TΦ: "|", t: [__RΦ.a(1721), __RΦ.a(4253), __RΦ.a(7285), __RΦ.a(26047), __RΦ.a(26891), __RΦ.a(26893), __RΦ.a(26895), __RΦ.a(26897)] }) }, [4253]: { LΦ: t => "head" }, [7285]: { LΦ: t => "options" }, [26893]: { LΦ: t => "put" }, [26895]: { LΦ: t => "delete" }, [26897]: { LΦ: t => "patch" }, [48830]: { RΦ: t => ({ TΦ: "[", e: __RΦ.a(30) }) }, [48843]: { RΦ: t => ({ TΦ: "|", t: [__RΦ.a(1903), __RΦ.a(4475), __RΦ.a(48491)] }) }, [48856]: { RΦ: t => ({ TΦ: "O", m: [{ n: "tags", f: "", t: __RΦ.a(94) }, { n: "summary", f: "", t: __RΦ.a(15) }, { n: "operationId", f: "", t: __RΦ.a(15) }, { n: "responses", f: "", t: __RΦ.a(30) }] }) }, [48497]: { TΦ: "5", name: "ApiSchema" }, [48690]: { RΦ: t => ({ TΦ: "O", m: [{ n: "openapi", f: "", t: __RΦ.a(15) }, { n: "info", f: "", t: __RΦ.a(48688) }, { n: "tags", f: "", t: __RΦ.a(76) }, { n: "paths", f: "", t: __RΦ.a(30) }, { n: "components", f: "", t: __RΦ.a(48689) }] }) }, [48688]: { RΦ: t => ({ TΦ: "O", m: [{ n: "title", f: "", t: __RΦ.a(15) }, { n: "description", f: "", t: __RΦ.a(15) }, { n: "license", f: "", t: __RΦ.a(48687) }, { n: "version", f: "", t: __RΦ.a(15) }] }) }, [48687]: { RΦ: t => ({ TΦ: "O", m: [{ n: "name", f: "", t: __RΦ.a(15) }] }) }, [76]: { RΦ: t => ({ TΦ: "[", e: __RΦ.a(1) }) }, [48689]: { RΦ: t => ({ TΦ: "O", m: [{ n: "schemas", f: "", t: __RΦ.a(30) }] }) }, [48489]: { RΦ: t => ({ TΦ: "|", t: [__RΦ.a(51), __RΦ.a(52), __RΦ.a(54), __RΦ.a(57), __RΦ.a(48487)] }) }, [51]: { LΦ: t => "string" }, [52]: { LΦ: t => "number" }, [54]: { LΦ: t => "boolean" }, [57]: { LΦ: t => "object" }, [48487]: { LΦ: t => "$ref" }, [22]: { LΦ: t => Boolean }, [48824]: { RΦ: t => ({ TΦ: "O", m: [] }) } } };
+    }, t: { [1]: { RΦ: t => ({ TΦ: "~" }) }, [15]: { LΦ: t => String }, [16]: { LΦ: t => Number }, [24]: { RΦ: t => ({ TΦ: "V" }) }, [48606]: { RΦ: t => ({ TΦ: "F", r: __RΦ.a(24), p: [{ n: "target", t: () => __RΦ.a(1), b: void 0, v: null }, { n: "propertyKey", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "parameterIndex", t: () => __RΦ.a(16), b: void 0, v: null }], f: "" }) }, [48607]: { RΦ: t => ({ TΦ: "O", m: [{ n: "path", f: "", t: __RΦ.a(15) }, { n: "allow-ip", f: "", t: __RΦ.a(94) }] }) }, [94]: { RΦ: t => ({ TΦ: "[", e: __RΦ.a(15) }) }, [4]: { RΦ: t => ({ TΦ: "~" }) }, [48486]: { RΦ: t => ({ TΦ: "|", t: [__RΦ.a(1721), __RΦ.a(26047), __RΦ.a(26891)] }) }, [1721]: { LΦ: t => "all" }, [26047]: { LΦ: t => "get" }, [26891]: { LΦ: t => "post" }, [66]: { LΦ: t => Function }, [48620]: { RΦ: t => ({ TΦ: "F", r: __RΦ.a(1), p: [{ n: "target", t: () => __RΦ.a(1), b: void 0, v: null }, { n: "propertyKey", t: () => __RΦ.a(15), b: void 0, v: null }], f: "" }) }, [30]: { LΦ: t => Object }, [48704]: { TΦ: "5", name: "ApiPath" }, [48592]: { RΦ: t => ({ TΦ: "[", e: __RΦ.a(48495) }) }, [48495]: { RΦ: t => ({ TΦ: "O", m: [{ n: "paramKind", f: "", t: __RΦ.a(48494) }, { n: "target", f: "", t: __RΦ.a(1) }, { n: "propertyKey", f: "", t: __RΦ.a(15) }, { n: "parameterIndex", f: "", t: __RΦ.a(16) }, { n: "paramName", f: "?", t: __RΦ.a(15) }] }) }, [48494]: { RΦ: t => ({ TΦ: "|", t: [__RΦ.a(1903), __RΦ.a(4475), __RΦ.a(48491)] }) }, [1903]: { LΦ: t => "formData" }, [4475]: { LΦ: t => "path" }, [48491]: { LΦ: t => "query" }, [48699]: { TΦ: "5", name: "ApiItem" }, [48496]: { RΦ: t => ({ TΦ: "O", m: [{ n: "target", f: "", t: __RΦ.a(1) }, { n: "propertyKey", f: "", t: __RΦ.a(15) }, { n: "parameterIndex", f: "", t: __RΦ.a(16) }] }) }, [48490]: { RΦ: t => ({ TΦ: "O", m: [{ n: "method", f: "", t: __RΦ.a(48486) }, { n: "clazz", f: "", t: __RΦ.a(15) }, { n: "target", f: "", t: __RΦ.a(1) }, { n: "propertyKey", f: "", t: __RΦ.a(15) }, { n: "path", f: "", t: __RΦ.a(15) }] }) }, [48831]: { RΦ: t => ({ TΦ: "O", m: [{ n: "title", f: "", t: __RΦ.a(15) }, { n: "type", f: "", t: __RΦ.a(15) }, { n: "properties", f: "", t: __RΦ.a(30) }] }) }, [48485]: { RΦ: t => ({ TΦ: "|", t: [__RΦ.a(1721), __RΦ.a(4253), __RΦ.a(7285), __RΦ.a(26047), __RΦ.a(26891), __RΦ.a(26893), __RΦ.a(26895), __RΦ.a(26897)] }) }, [4253]: { LΦ: t => "head" }, [7285]: { LΦ: t => "options" }, [26893]: { LΦ: t => "put" }, [26895]: { LΦ: t => "delete" }, [26897]: { LΦ: t => "patch" }, [48834]: { RΦ: t => ({ TΦ: "[", e: __RΦ.a(30) }) }, [48847]: { RΦ: t => ({ TΦ: "|", t: [__RΦ.a(1903), __RΦ.a(4475), __RΦ.a(48491)] }) }, [48860]: { RΦ: t => ({ TΦ: "O", m: [{ n: "tags", f: "", t: __RΦ.a(94) }, { n: "summary", f: "", t: __RΦ.a(15) }, { n: "operationId", f: "", t: __RΦ.a(15) }, { n: "responses", f: "", t: __RΦ.a(30) }] }) }, [48497]: { TΦ: "5", name: "ApiSchema" }, [48690]: { RΦ: t => ({ TΦ: "O", m: [{ n: "openapi", f: "", t: __RΦ.a(15) }, { n: "info", f: "", t: __RΦ.a(48688) }, { n: "tags", f: "", t: __RΦ.a(76) }, { n: "paths", f: "", t: __RΦ.a(30) }, { n: "components", f: "", t: __RΦ.a(48689) }] }) }, [48688]: { RΦ: t => ({ TΦ: "O", m: [{ n: "title", f: "", t: __RΦ.a(15) }, { n: "description", f: "", t: __RΦ.a(15) }, { n: "license", f: "", t: __RΦ.a(48687) }, { n: "version", f: "", t: __RΦ.a(15) }] }) }, [48687]: { RΦ: t => ({ TΦ: "O", m: [{ n: "name", f: "", t: __RΦ.a(15) }] }) }, [76]: { RΦ: t => ({ TΦ: "[", e: __RΦ.a(1) }) }, [48689]: { RΦ: t => ({ TΦ: "O", m: [{ n: "schemas", f: "", t: __RΦ.a(30) }] }) }, [48489]: { RΦ: t => ({ TΦ: "|", t: [__RΦ.a(51), __RΦ.a(52), __RΦ.a(54), __RΦ.a(57), __RΦ.a(48487)] }) }, [51]: { LΦ: t => "string" }, [52]: { LΦ: t => "number" }, [54]: { LΦ: t => "boolean" }, [57]: { LΦ: t => "object" }, [48487]: { LΦ: t => "$ref" }, [22]: { LΦ: t => Boolean }, [48828]: { RΦ: t => ({ TΦ: "O", m: [] }) } } };
 const typespeed_1 = require("typespeed");
 const fs = require("fs");
 require("reflect-metadata");
@@ -232,8 +232,10 @@ function createApiPath(router) {
     const { method, clazz, target, propertyKey } = router;
     const apiPath = new ApiPath(method, clazz, propertyKey);
     const responseType = (0, typescript_rtti_1.reflect)(target[propertyKey], { TΦ: "c", t: void 0, p: [__RΦ.a(1)], r: void 0, tp: [] }).returnType;
-    if (!responseType || responseType["_ref"])
+    if (!responseType || responseType["_ref"]) {
+        apiPath.addResponse("200", "OK");
         return apiPath;
+    }
     let realType = responseType["_ref"];
     if (responseType.isPromise()) {
         realType = responseType["_ref"]["p"][0];
@@ -304,7 +306,7 @@ __RΦ.m("rt:f", "M.")(ApiSchema.prototype["toDoc"]);
 ((t, p) => __RΦ.m("rt:h", () => typeof t === "object" ? t.constructor : t)(t[p]))(ApiSchema.prototype, "toDoc");
 __RΦ.m("rt:p", [])(ApiSchema.prototype, "toDoc");
 __RΦ.m("rt:f", "M.")(ApiSchema.prototype, "toDoc");
-__RΦ.m("rt:t", () => __RΦ.a(48827))(ApiSchema.prototype, "toDoc");
+__RΦ.m("rt:t", () => __RΦ.a(48831))(ApiSchema.prototype, "toDoc");
 class ApiPath {
     constructor(method, tagName, summary) {
         this.responses = {};
@@ -376,7 +378,7 @@ __RΦ.m("rt:t", () => __RΦ.a(48485))(ApiPath.prototype, "method");
 __RΦ.m("rt:f", "P$")(ApiPath.prototype, "method");
 __RΦ.m("rt:t", () => __RΦ.a(30))(ApiPath.prototype, "responses");
 __RΦ.m("rt:f", "P$")(ApiPath.prototype, "responses");
-__RΦ.m("rt:t", () => __RΦ.a(48830))(ApiPath.prototype, "parameters");
+__RΦ.m("rt:t", () => __RΦ.a(48834))(ApiPath.prototype, "parameters");
 __RΦ.m("rt:f", "P$")(ApiPath.prototype, "parameters");
 __RΦ.m("rt:t", () => __RΦ.a(30))(ApiPath.prototype, "requestBody");
 __RΦ.m("rt:f", "P$")(ApiPath.prototype, "requestBody");
@@ -387,7 +389,7 @@ __RΦ.m("rt:f", "M.")(ApiPath.prototype, "addResponse");
 __RΦ.m("rt:t", () => __RΦ.a(24))(ApiPath.prototype, "addResponse");
 __RΦ.m("rt:f", "M.")(ApiPath.prototype["addParameter"]);
 ((t, p) => __RΦ.m("rt:h", () => typeof t === "object" ? t.constructor : t)(t[p]))(ApiPath.prototype, "addParameter");
-__RΦ.m("rt:p", [{ n: "paramIn", t: () => __RΦ.a(48843), b: void 0, v: null }, { n: "name", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "itemObject", t: () => __RΦ.a(48699), b: void 0, v: null }])(ApiPath.prototype, "addParameter");
+__RΦ.m("rt:p", [{ n: "paramIn", t: () => __RΦ.a(48847), b: void 0, v: null }, { n: "name", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "itemObject", t: () => __RΦ.a(48699), b: void 0, v: null }])(ApiPath.prototype, "addParameter");
 __RΦ.m("rt:f", "M.")(ApiPath.prototype, "addParameter");
 __RΦ.m("rt:t", () => __RΦ.a(24))(ApiPath.prototype, "addParameter");
 __RΦ.m("rt:f", "M.")(ApiPath.prototype["addRequestBody"]);
@@ -399,7 +401,7 @@ __RΦ.m("rt:f", "M.")(ApiPath.prototype["toDoc"]);
 ((t, p) => __RΦ.m("rt:h", () => typeof t === "object" ? t.constructor : t)(t[p]))(ApiPath.prototype, "toDoc");
 __RΦ.m("rt:p", [])(ApiPath.prototype, "toDoc");
 __RΦ.m("rt:f", "M.")(ApiPath.prototype, "toDoc");
-__RΦ.m("rt:t", () => __RΦ.a(48856))(ApiPath.prototype, "toDoc");
+__RΦ.m("rt:t", () => __RΦ.a(48860))(ApiPath.prototype, "toDoc");
 class ApiDocument {
     constructor() {
         this.tags = {};
@@ -535,4 +537,4 @@ __RΦ.m("rt:f", "M$.")(ApiItem.prototype["toDoc"]);
 ((t, p) => __RΦ.m("rt:h", () => typeof t === "object" ? t.constructor : t)(t[p]))(ApiItem.prototype, "toDoc");
 __RΦ.m("rt:p", [])(ApiItem.prototype, "toDoc");
 __RΦ.m("rt:f", "M$.")(ApiItem.prototype, "toDoc");
-__RΦ.m("rt:t", () => __RΦ.a(48824))(ApiItem.prototype, "toDoc");
+__RΦ.m("rt:t", () => __RΦ.a(48828))(ApiItem.prototype, "toDoc");
