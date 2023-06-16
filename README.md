@@ -33,7 +33,7 @@ import { getMapping, reqQuery } from "typespeed-swagger";
 **Second**, add swagger middleware to the main.ts entry file, as follows:
 ```
 import { app, log, autoware, ServerFactory } from "typespeed";
-import { swaggerMiddleware } from "typespeed-swagger";;
+import { swaggerMiddleware } from "typespeed-swagger";
 
 @app
 class Main {
@@ -42,7 +42,7 @@ class Main {
     public server: ServerFactory;
 
     public main() {
-        swaggerMiddleware(this.server.app, { path: "/docs", "allow-ip": ["127.0.0.1"]}, "./package.json");
+        swaggerMiddleware(this.server.app, { path: "/docs", "allow-ip": ["127.0.0.1"] }, "./package.json");
         this.server.start(8081);
     }
 }
