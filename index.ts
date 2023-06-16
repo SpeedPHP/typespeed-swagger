@@ -165,6 +165,7 @@ function handleRealType(realType: any, callback: Function) {
 function handleRequestParams(apiPath: ApiPath, params: ParamMapType[]) {
     params.forEach(param => {
         const paramType = reflect(param.target[param.propertyKey]).parameters[param.parameterIndex];
+        if(!paramType || !paramType.type || paramType.type["_ref"]) return;
         const realType = paramType.type["_ref"];
         handleRealType(realType, (item: ApiItem) => {
             apiPath.addParameter(param.paramKind, param.paramName || paramType.name, item);
@@ -175,6 +176,7 @@ function handleRequestParams(apiPath: ApiPath, params: ParamMapType[]) {
 function handleRequestBody(apiPath: ApiPath, bodyParam: RequestBodyMapType) {
     const { target, propertyKey, parameterIndex } = bodyParam;
     const paramType = reflect(target[propertyKey]).parameters[parameterIndex];
+    if(!paramType || !paramType.type || paramType.type["_ref"]) return;
     const realType = paramType.type["_ref"];
     handleRealType(realType, (item: ApiItem) => {
         apiPath.addRequestBody(item);
@@ -185,6 +187,7 @@ function createApiPath(router: RouterType): ApiPath {
     const { method, clazz, target, propertyKey } = router;
     const apiPath = new ApiPath(method, clazz, propertyKey);
     const responseType = reflect(target[propertyKey]).returnType;
+    if(!responseType || responseType["_ref"]) return apiPath;
     let realType = responseType["_ref"];
     if (responseType.isPromise()) {
         realType = responseType["_ref"]["p"][0];
