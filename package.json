@@ -1,6 +1,6 @@
 {
   "name": "typespeed-swagger",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "The Swagger plugin for the TypeSpeed framework.",
   "main": "dist/index.js",
   "scripts": {
