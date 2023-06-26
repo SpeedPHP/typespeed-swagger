@@ -1,12 +1,12 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "typespeed-swagger",
-    "description": "The Swagger plugin for the TypeSpeed framework.",
+    "title": "typespeed-swagger-example",
+    "description": "The example for typespeed-swagger.",
     "license": {
       "name": "MIT"
     },
-    "version": "1.1.0"
+    "version": "0.1.0"
   },
   "tags": [
     {

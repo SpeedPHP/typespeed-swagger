@@ -1,5 +1,7 @@
 import { app, log, autoware, ServerFactory } from "typespeed";
 import { swaggerMiddleware } from "../index";
+import * as path from "path";
+
 let appServer = null;
 
 @app
@@ -9,7 +11,8 @@ class Main {
     public server : ServerFactory;
 
     public main(){
-        swaggerMiddleware(this.server.app, null, "./package.json");
+        const packageJson = path.join(__dirname, "./package.json");
+        swaggerMiddleware(this.server.app, null, packageJson);
         appServer = this.server.start(8082);
     }
 }
