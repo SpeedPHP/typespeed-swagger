@@ -1,0 +1,33 @@
+name: Tests
+'on': ["push"]
+
+jobs:
+  test:
+    name: 'Node.js v${{ matrix.node }}'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node:
+          - 14
+          - 16
+          - 18
+    steps:
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '${{ matrix.node }}'
+      - uses: actions/checkout@v2
+      - name: 'Cache node_modules'
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-v${{ matrix.node }}-${{ hashFiles('**/package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-v${{ matrix.node }}-
+      - name: Install Dependencies
+        run: npm install
+      - name: Run Tests with Coverage
+        run: npm run test-with-coverage
+  upload:
+    name: Upload coverage reports to Codecov
+    uses: codecov/codecov-action@v3
+    env: CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
