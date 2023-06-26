@@ -16,7 +16,7 @@ const __RΦ = { m: (k, v) => (t, ...a) => t && Reflect.metadata ? Reflect.metada
             __RΦ.t[id] = t = l;
         }
         return t;
-    }, t: { [1]: { RΦ: t => ({ TΦ: "~" }) }, [15]: { LΦ: t => String }, [16]: { LΦ: t => Number }, [24]: { RΦ: t => ({ TΦ: "V" }) }, [48606]: { RΦ: t => ({ TΦ: "F", r: __RΦ.a(24), p: [{ n: "target", t: () => __RΦ.a(1), b: void 0, v: null }, { n: "propertyKey", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "parameterIndex", t: () => __RΦ.a(16), b: void 0, v: null }], f: "" }) }, [48607]: { RΦ: t => ({ TΦ: "O", m: [{ n: "path", f: "", t: __RΦ.a(15) }, { n: "allow-ip", f: "", t: __RΦ.a(94) }] }) }, [94]: { RΦ: t => ({ TΦ: "[", e: __RΦ.a(15) }) }, [4]: { RΦ: t => ({ TΦ: "~" }) }, [48486]: { RΦ: t => ({ TΦ: "|", t: [__RΦ.a(1721), __RΦ.a(26047), __RΦ.a(26891)] }) }, [1721]: { LΦ: t => "all" }, [26047]: { LΦ: t => "get" }, [26891]: { LΦ: t => "post" }, [66]: { LΦ: t => Function }, [48620]: { RΦ: t => ({ TΦ: "F", r: __RΦ.a(1), p: [{ n: "target", t: () => __RΦ.a(1), b: void 0, v: null }, { n: "propertyKey", t: () => __RΦ.a(15), b: void 0, v: null }], f: "" }) }, [30]: { LΦ: t => Object }, [48704]: { TΦ: "5", name: "ApiPath" }, [48592]: { RΦ: t => ({ TΦ: "[", e: __RΦ.a(48495) }) }, [48495]: { RΦ: t => ({ TΦ: "O", m: [{ n: "paramKind", f: "", t: __RΦ.a(48494) }, { n: "target", f: "", t: __RΦ.a(1) }, { n: "propertyKey", f: "", t: __RΦ.a(15) }, { n: "parameterIndex", f: "", t: __RΦ.a(16) }, { n: "paramName", f: "?", t: __RΦ.a(15) }] }) }, [48494]: { RΦ: t => ({ TΦ: "|", t: [__RΦ.a(1903), __RΦ.a(4475), __RΦ.a(48491)] }) }, [1903]: { LΦ: t => "formData" }, [4475]: { LΦ: t => "path" }, [48491]: { LΦ: t => "query" }, [48699]: { TΦ: "5", name: "ApiItem" }, [48496]: { RΦ: t => ({ TΦ: "O", m: [{ n: "target", f: "", t: __RΦ.a(1) }, { n: "propertyKey", f: "", t: __RΦ.a(15) }, { n: "parameterIndex", f: "", t: __RΦ.a(16) }] }) }, [48490]: { RΦ: t => ({ TΦ: "O", m: [{ n: "method", f: "", t: __RΦ.a(48486) }, { n: "clazz", f: "", t: __RΦ.a(15) }, { n: "target", f: "", t: __RΦ.a(1) }, { n: "propertyKey", f: "", t: __RΦ.a(15) }, { n: "path", f: "", t: __RΦ.a(15) }] }) }, [48831]: { RΦ: t => ({ TΦ: "O", m: [{ n: "title", f: "", t: __RΦ.a(15) }, { n: "type", f: "", t: __RΦ.a(15) }, { n: "properties", f: "", t: __RΦ.a(30) }] }) }, [48485]: { RΦ: t => ({ TΦ: "|", t: [__RΦ.a(1721), __RΦ.a(4253), __RΦ.a(7285), __RΦ.a(26047), __RΦ.a(26891), __RΦ.a(26893), __RΦ.a(26895), __RΦ.a(26897)] }) }, [4253]: { LΦ: t => "head" }, [7285]: { LΦ: t => "options" }, [26893]: { LΦ: t => "put" }, [26895]: { LΦ: t => "delete" }, [26897]: { LΦ: t => "patch" }, [48834]: { RΦ: t => ({ TΦ: "[", e: __RΦ.a(30) }) }, [48847]: { RΦ: t => ({ TΦ: "|", t: [__RΦ.a(1903), __RΦ.a(4475), __RΦ.a(48491)] }) }, [48860]: { RΦ: t => ({ TΦ: "O", m: [{ n: "tags", f: "", t: __RΦ.a(94) }, { n: "summary", f: "", t: __RΦ.a(15) }, { n: "operationId", f: "", t: __RΦ.a(15) }, { n: "responses", f: "", t: __RΦ.a(30) }] }) }, [48497]: { TΦ: "5", name: "ApiSchema" }, [48690]: { RΦ: t => ({ TΦ: "O", m: [{ n: "openapi", f: "", t: __RΦ.a(15) }, { n: "info", f: "", t: __RΦ.a(48688) }, { n: "tags", f: "", t: __RΦ.a(76) }, { n: "paths", f: "", t: __RΦ.a(30) }, { n: "components", f: "", t: __RΦ.a(48689) }] }) }, [48688]: { RΦ: t => ({ TΦ: "O", m: [{ n: "title", f: "", t: __RΦ.a(15) }, { n: "description", f: "", t: __RΦ.a(15) }, { n: "license", f: "", t: __RΦ.a(48687) }, { n: "version", f: "", t: __RΦ.a(15) }] }) }, [48687]: { RΦ: t => ({ TΦ: "O", m: [{ n: "name", f: "", t: __RΦ.a(15) }] }) }, [76]: { RΦ: t => ({ TΦ: "[", e: __RΦ.a(1) }) }, [48689]: { RΦ: t => ({ TΦ: "O", m: [{ n: "schemas", f: "", t: __RΦ.a(30) }] }) }, [48489]: { RΦ: t => ({ TΦ: "|", t: [__RΦ.a(51), __RΦ.a(52), __RΦ.a(54), __RΦ.a(57), __RΦ.a(48487)] }) }, [51]: { LΦ: t => "string" }, [52]: { LΦ: t => "number" }, [54]: { LΦ: t => "boolean" }, [57]: { LΦ: t => "object" }, [48487]: { LΦ: t => "$ref" }, [22]: { LΦ: t => Boolean }, [48828]: { RΦ: t => ({ TΦ: "O", m: [] }) } } };
+    }, t: { [1]: { RΦ: t => ({ TΦ: "~" }) }, [15]: { LΦ: t => String }, [16]: { LΦ: t => Number }, [24]: { RΦ: t => ({ TΦ: "V" }) }, [50915]: { RΦ: t => ({ TΦ: "F", r: __RΦ.a(24), p: [{ n: "target", t: () => __RΦ.a(1), b: void 0, v: null }, { n: "propertyKey", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "parameterIndex", t: () => __RΦ.a(16), b: void 0, v: null }], f: "" }) }, [50916]: { RΦ: t => ({ TΦ: "O", m: [{ n: "path", f: "", t: __RΦ.a(15) }, { n: "allow-ip", f: "", t: __RΦ.a(94) }] }) }, [94]: { RΦ: t => ({ TΦ: "[", e: __RΦ.a(15) }) }, [4]: { RΦ: t => ({ TΦ: "~" }) }, [50795]: { RΦ: t => ({ TΦ: "|", t: [__RΦ.a(1721), __RΦ.a(28227), __RΦ.a(29087)] }) }, [1721]: { LΦ: t => "all" }, [28227]: { LΦ: t => "get" }, [29087]: { LΦ: t => "post" }, [66]: { LΦ: t => Function }, [50929]: { RΦ: t => ({ TΦ: "F", r: __RΦ.a(1), p: [{ n: "target", t: () => __RΦ.a(1), b: void 0, v: null }, { n: "propertyKey", t: () => __RΦ.a(15), b: void 0, v: null }], f: "" }) }, [30]: { LΦ: t => Object }, [51014]: { TΦ: "5", name: "ApiPath" }, [50901]: { RΦ: t => ({ TΦ: "[", e: __RΦ.a(50804) }) }, [50804]: { RΦ: t => ({ TΦ: "O", m: [{ n: "paramKind", f: "", t: __RΦ.a(50803) }, { n: "target", f: "", t: __RΦ.a(1) }, { n: "propertyKey", f: "", t: __RΦ.a(15) }, { n: "parameterIndex", f: "", t: __RΦ.a(16) }, { n: "paramName", f: "?", t: __RΦ.a(15) }] }) }, [50803]: { RΦ: t => ({ TΦ: "|", t: [__RΦ.a(1903), __RΦ.a(4476), __RΦ.a(50800)] }) }, [1903]: { LΦ: t => "formData" }, [4476]: { LΦ: t => "path" }, [50800]: { LΦ: t => "query" }, [51009]: { TΦ: "5", name: "ApiItem" }, [50805]: { RΦ: t => ({ TΦ: "O", m: [{ n: "target", f: "", t: __RΦ.a(1) }, { n: "propertyKey", f: "", t: __RΦ.a(15) }, { n: "parameterIndex", f: "", t: __RΦ.a(16) }] }) }, [50799]: { RΦ: t => ({ TΦ: "O", m: [{ n: "method", f: "", t: __RΦ.a(50795) }, { n: "clazz", f: "", t: __RΦ.a(15) }, { n: "target", f: "", t: __RΦ.a(1) }, { n: "propertyKey", f: "", t: __RΦ.a(15) }, { n: "path", f: "", t: __RΦ.a(15) }] }) }, [51141]: { RΦ: t => ({ TΦ: "O", m: [{ n: "title", f: "", t: __RΦ.a(15) }, { n: "type", f: "", t: __RΦ.a(15) }, { n: "properties", f: "", t: __RΦ.a(30) }] }) }, [50794]: { RΦ: t => ({ TΦ: "|", t: [__RΦ.a(1721), __RΦ.a(4254), __RΦ.a(7286), __RΦ.a(28227), __RΦ.a(29087), __RΦ.a(29089), __RΦ.a(29091), __RΦ.a(29093)] }) }, [4254]: { LΦ: t => "head" }, [7286]: { LΦ: t => "options" }, [29089]: { LΦ: t => "put" }, [29091]: { LΦ: t => "delete" }, [29093]: { LΦ: t => "patch" }, [51144]: { RΦ: t => ({ TΦ: "[", e: __RΦ.a(30) }) }, [51157]: { RΦ: t => ({ TΦ: "|", t: [__RΦ.a(1903), __RΦ.a(4476), __RΦ.a(50800)] }) }, [51170]: { RΦ: t => ({ TΦ: "O", m: [{ n: "tags", f: "", t: __RΦ.a(94) }, { n: "summary", f: "", t: __RΦ.a(15) }, { n: "operationId", f: "", t: __RΦ.a(15) }, { n: "responses", f: "", t: __RΦ.a(30) }] }) }, [50806]: { TΦ: "5", name: "ApiSchema" }, [51000]: { RΦ: t => ({ TΦ: "O", m: [{ n: "openapi", f: "", t: __RΦ.a(15) }, { n: "info", f: "", t: __RΦ.a(50998) }, { n: "tags", f: "", t: __RΦ.a(76) }, { n: "paths", f: "", t: __RΦ.a(30) }, { n: "components", f: "", t: __RΦ.a(50999) }] }) }, [50998]: { RΦ: t => ({ TΦ: "O", m: [{ n: "title", f: "", t: __RΦ.a(15) }, { n: "description", f: "", t: __RΦ.a(15) }, { n: "license", f: "", t: __RΦ.a(50997) }, { n: "version", f: "", t: __RΦ.a(15) }] }) }, [50997]: { RΦ: t => ({ TΦ: "O", m: [{ n: "name", f: "", t: __RΦ.a(15) }] }) }, [76]: { RΦ: t => ({ TΦ: "[", e: __RΦ.a(1) }) }, [50999]: { RΦ: t => ({ TΦ: "O", m: [{ n: "schemas", f: "", t: __RΦ.a(30) }] }) }, [50798]: { RΦ: t => ({ TΦ: "|", t: [__RΦ.a(51), __RΦ.a(52), __RΦ.a(54), __RΦ.a(57), __RΦ.a(50796)] }) }, [51]: { LΦ: t => "string" }, [52]: { LΦ: t => "number" }, [54]: { LΦ: t => "boolean" }, [57]: { LΦ: t => "object" }, [50796]: { LΦ: t => "$ref" }, [22]: { LΦ: t => Boolean }, [51138]: { RΦ: t => ({ TΦ: "O", m: [] }) } } };
 const typespeed_1 = require("typespeed");
 const fs = require("fs");
 require("reflect-metadata");
@@ -84,7 +84,7 @@ function reqForm(paramName) {
 exports.reqForm = reqForm;
 __RΦ.m("rt:p", [{ n: "paramName", t: () => __RΦ.a(15), b: void 0, v: null }])(reqForm);
 __RΦ.m("rt:f", "F")(reqForm);
-__RΦ.m("rt:t", () => __RΦ.a(48606))(reqForm);
+__RΦ.m("rt:t", () => __RΦ.a(50915))(reqForm);
 function swaggerMiddleware(app, options, packageJsonPath) {
     const path = options && options.path || "/docs";
     const swaggerJsonPath = path + "/swagger.json";
@@ -100,7 +100,7 @@ function swaggerMiddleware(app, options, packageJsonPath) {
     app.use(path, checkAllowIp, swaggerUi.serveFiles(null, swggerOptions), swaggerUi.setup(null, swggerOptions));
 }
 exports.swaggerMiddleware = swaggerMiddleware;
-__RΦ.m("rt:p", [{ n: "app", t: () => __RΦ.a(1), b: void 0, v: null }, { n: "options", t: () => __RΦ.a(48607), b: void 0, v: null, f: "?" }, { n: "packageJsonPath", t: () => __RΦ.a(15), b: void 0, v: null, f: "?" }])(swaggerMiddleware);
+__RΦ.m("rt:p", [{ n: "app", t: () => __RΦ.a(1), b: void 0, v: null }, { n: "options", t: () => __RΦ.a(50916), b: void 0, v: null, f: "?" }, { n: "packageJsonPath", t: () => __RΦ.a(15), b: void 0, v: null, f: "?" }])(swaggerMiddleware);
 __RΦ.m("rt:f", "F")(swaggerMiddleware);
 __RΦ.m("rt:t", () => __RΦ.a(24))(swaggerMiddleware);
 function toMapping(method, path, mappingMethod) {
@@ -119,14 +119,14 @@ function toMapping(method, path, mappingMethod) {
         return handler(target, propertyKey);
     }, [__RΦ.m("rt:p", [{ n: "target", t: () => __RΦ.a(1), b: void 0, v: null }, { n: "propertyKey", t: () => __RΦ.a(15), b: void 0, v: null }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(1))], "");
 }
-__RΦ.m("rt:p", [{ n: "method", t: () => __RΦ.a(48486), b: void 0, v: null }, { n: "path", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "mappingMethod", t: () => __RΦ.a(66), b: void 0, v: null }])(toMapping);
+__RΦ.m("rt:p", [{ n: "method", t: () => __RΦ.a(50795), b: void 0, v: null }, { n: "path", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "mappingMethod", t: () => __RΦ.a(66), b: void 0, v: null }])(toMapping);
 __RΦ.m("rt:f", "F")(toMapping);
-__RΦ.m("rt:t", () => __RΦ.a(48620))(toMapping);
+__RΦ.m("rt:t", () => __RΦ.a(50929))(toMapping);
 function swaggerDocument(packageJsonPath) {
     if (routerMap.size === 0)
         return;
     const apiDocument = new ApiDocument();
-    if (packageJsonPath) {
+    if (packageJsonPath && fs.existsSync(packageJsonPath)) {
         try {
             const jsonContents = fs.readFileSync(packageJsonPath, 'utf8');
             const packageJson = JSON.parse(jsonContents);
@@ -159,11 +159,11 @@ __RΦ.m("rt:p", [{ n: "packageJsonPath", t: () => __RΦ.a(15), b: void 0, v: nul
 __RΦ.m("rt:f", "F")(swaggerDocument);
 __RΦ.m("rt:t", () => __RΦ.a(30))(swaggerDocument);
 ;
-const getMapping = __RΦ.f((value) => toMapping("get", value, typespeed_1.getMapping), [__RΦ.m("rt:p", [{ n: "value", t: () => __RΦ.a(15), b: void 0, v: null }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(48620))], "getMapping");
+const getMapping = __RΦ.f((value) => toMapping("get", value, typespeed_1.getMapping), [__RΦ.m("rt:p", [{ n: "value", t: () => __RΦ.a(15), b: void 0, v: null }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(50929))], "getMapping");
 exports.getMapping = getMapping;
-const postMapping = __RΦ.f((value) => toMapping("post", value, typespeed_1.postMapping), [__RΦ.m("rt:p", [{ n: "value", t: () => __RΦ.a(15), b: void 0, v: null }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(48620))], "postMapping");
+const postMapping = __RΦ.f((value) => toMapping("post", value, typespeed_1.postMapping), [__RΦ.m("rt:p", [{ n: "value", t: () => __RΦ.a(15), b: void 0, v: null }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(50929))], "postMapping");
 exports.postMapping = postMapping;
-const requestMapping = __RΦ.f((value) => toMapping("all", value, typespeed_1.requestMapping), [__RΦ.m("rt:p", [{ n: "value", t: () => __RΦ.a(15), b: void 0, v: null }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(48620))], "requestMapping");
+const requestMapping = __RΦ.f((value) => toMapping("all", value, typespeed_1.requestMapping), [__RΦ.m("rt:p", [{ n: "value", t: () => __RΦ.a(15), b: void 0, v: null }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(50929))], "requestMapping");
 exports.requestMapping = requestMapping;
 function handleRealType(realType, callback) {
     if (typeof realType === "function") {
@@ -204,28 +204,26 @@ __RΦ.m("rt:t", () => __RΦ.a(24))(handleRealType);
 function handleRequestParams(apiPath, params) {
     params.forEach(__RΦ.f(param => {
         const paramType = (0, typescript_rtti_1.reflect)(param.target[param.propertyKey], { TΦ: "c", t: void 0, p: [__RΦ.a(1)], r: void 0, tp: [] }).parameters[param.parameterIndex];
-        if (!paramType || !paramType.type || paramType.type["_ref"])
-            return;
+        //if(!paramType || !paramType.type || paramType.type["_ref"]) return;
         const realType = paramType.type["_ref"];
         handleRealType(realType, __RΦ.f((item) => {
             apiPath.addParameter(param.paramKind, param.paramName || paramType.name, item);
-        }, [__RΦ.m("rt:p", [{ n: "item", t: () => __RΦ.a(48699), b: void 0, v: null }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(24))], ""));
+        }, [__RΦ.m("rt:p", [{ n: "item", t: () => __RΦ.a(51009), b: void 0, v: null }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(24))], ""));
     }, [__RΦ.m("rt:p", [{ n: "param", t: () => __RΦ.a(4), b: void 0, v: null }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(24))], ""));
 }
-__RΦ.m("rt:p", [{ n: "apiPath", t: () => __RΦ.a(48704), b: void 0, v: null }, { n: "params", t: () => __RΦ.a(48592), b: void 0, v: null }])(handleRequestParams);
+__RΦ.m("rt:p", [{ n: "apiPath", t: () => __RΦ.a(51014), b: void 0, v: null }, { n: "params", t: () => __RΦ.a(50901), b: void 0, v: null }])(handleRequestParams);
 __RΦ.m("rt:f", "F")(handleRequestParams);
 __RΦ.m("rt:t", () => __RΦ.a(24))(handleRequestParams);
 function handleRequestBody(apiPath, bodyParam) {
     const { target, propertyKey, parameterIndex } = bodyParam;
     const paramType = (0, typescript_rtti_1.reflect)(target[propertyKey], { TΦ: "c", t: void 0, p: [__RΦ.a(1)], r: void 0, tp: [] }).parameters[parameterIndex];
-    if (!paramType || !paramType.type || paramType.type["_ref"])
-        return;
+    //if(!paramType || !paramType.type || paramType.type["_ref"]) return;
     const realType = paramType.type["_ref"];
     handleRealType(realType, __RΦ.f((item) => {
         apiPath.addRequestBody(item);
-    }, [__RΦ.m("rt:p", [{ n: "item", t: () => __RΦ.a(48699), b: void 0, v: null }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(24))], ""));
+    }, [__RΦ.m("rt:p", [{ n: "item", t: () => __RΦ.a(51009), b: void 0, v: null }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(24))], ""));
 }
-__RΦ.m("rt:p", [{ n: "apiPath", t: () => __RΦ.a(48704), b: void 0, v: null }, { n: "bodyParam", t: () => __RΦ.a(48496), b: void 0, v: null }])(handleRequestBody);
+__RΦ.m("rt:p", [{ n: "apiPath", t: () => __RΦ.a(51014), b: void 0, v: null }, { n: "bodyParam", t: () => __RΦ.a(50805), b: void 0, v: null }])(handleRequestBody);
 __RΦ.m("rt:f", "F")(handleRequestBody);
 __RΦ.m("rt:t", () => __RΦ.a(24))(handleRequestBody);
 function createApiPath(router) {
@@ -247,12 +245,12 @@ function createApiPath(router) {
         else {
             apiPath.addResponse("200", "OK", item);
         }
-    }, [__RΦ.m("rt:p", [{ n: "item", t: () => __RΦ.a(48699), b: void 0, v: null, f: "?" }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(24))], ""));
+    }, [__RΦ.m("rt:p", [{ n: "item", t: () => __RΦ.a(51009), b: void 0, v: null, f: "?" }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(24))], ""));
     return apiPath;
 }
-__RΦ.m("rt:p", [{ n: "router", t: () => __RΦ.a(48490), b: void 0, v: null }])(createApiPath);
+__RΦ.m("rt:p", [{ n: "router", t: () => __RΦ.a(50799), b: void 0, v: null }])(createApiPath);
 __RΦ.m("rt:f", "F")(createApiPath);
-__RΦ.m("rt:t", () => __RΦ.a(48704))(createApiPath);
+__RΦ.m("rt:t", () => __RΦ.a(51014))(createApiPath);
 function handleComponent(target) {
     const ref = (0, typescript_rtti_1.reflect)(target, { TΦ: "c", t: void 0, p: [__RΦ.a(1)], r: void 0, tp: [] });
     const obj = new target;
@@ -262,7 +260,7 @@ function handleComponent(target) {
         if (params && params.type && params.type["_ref"]) {
             handleRealType(params.type["_ref"], __RΦ.f((item) => {
                 apiSchema.addProperty(k, item);
-            }, [__RΦ.m("rt:p", [{ n: "item", t: () => __RΦ.a(48699), b: void 0, v: null }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(24))], ""));
+            }, [__RΦ.m("rt:p", [{ n: "item", t: () => __RΦ.a(51009), b: void 0, v: null }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(24))], ""));
         }
     }, [__RΦ.m("rt:p", [{ n: "k", t: () => __RΦ.a(4), b: void 0, v: null }]), __RΦ.m("rt:f", "F>"), __RΦ.m("rt:t", () => __RΦ.a(24))], ""));
     schemaMap.set(target.name, apiSchema);
@@ -286,7 +284,7 @@ class ApiSchema {
         };
     }
 }
-(t => __RΦ.t[48497] = t)(ApiSchema);
+(t => __RΦ.t[50806] = t)(ApiSchema);
 __RΦ.m("rt:SP", [])(ApiSchema);
 __RΦ.m("rt:P", ["title", "properties"])(ApiSchema);
 __RΦ.m("rt:Sm", [])(ApiSchema);
@@ -299,14 +297,14 @@ __RΦ.m("rt:t", () => __RΦ.a(30))(ApiSchema.prototype, "properties");
 __RΦ.m("rt:f", "P$")(ApiSchema.prototype, "properties");
 __RΦ.m("rt:f", "M.")(ApiSchema.prototype["addProperty"]);
 ((t, p) => __RΦ.m("rt:h", () => typeof t === "object" ? t.constructor : t)(t[p]))(ApiSchema.prototype, "addProperty");
-__RΦ.m("rt:p", [{ n: "name", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "item", t: () => __RΦ.a(48699), b: void 0, v: null }])(ApiSchema.prototype, "addProperty");
+__RΦ.m("rt:p", [{ n: "name", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "item", t: () => __RΦ.a(51009), b: void 0, v: null }])(ApiSchema.prototype, "addProperty");
 __RΦ.m("rt:f", "M.")(ApiSchema.prototype, "addProperty");
 __RΦ.m("rt:t", () => __RΦ.a(24))(ApiSchema.prototype, "addProperty");
 __RΦ.m("rt:f", "M.")(ApiSchema.prototype["toDoc"]);
 ((t, p) => __RΦ.m("rt:h", () => typeof t === "object" ? t.constructor : t)(t[p]))(ApiSchema.prototype, "toDoc");
 __RΦ.m("rt:p", [])(ApiSchema.prototype, "toDoc");
 __RΦ.m("rt:f", "M.")(ApiSchema.prototype, "toDoc");
-__RΦ.m("rt:t", () => __RΦ.a(48831))(ApiSchema.prototype, "toDoc");
+__RΦ.m("rt:t", () => __RΦ.a(51141))(ApiSchema.prototype, "toDoc");
 class ApiPath {
     constructor(method, tagName, summary) {
         this.responses = {};
@@ -363,45 +361,45 @@ class ApiPath {
         return doc;
     }
 }
-(t => __RΦ.t[48704] = t)(ApiPath);
+(t => __RΦ.t[51014] = t)(ApiPath);
 __RΦ.m("rt:SP", [])(ApiPath);
 __RΦ.m("rt:P", ["tagName", "summary", "method", "responses", "parameters", "requestBody"])(ApiPath);
 __RΦ.m("rt:Sm", [])(ApiPath);
 __RΦ.m("rt:m", ["addResponse", "addParameter", "addRequestBody", "toDoc"])(ApiPath);
-__RΦ.m("rt:p", [{ n: "method", t: () => __RΦ.a(48485), b: void 0, v: null }, { n: "tagName", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "summary", t: () => __RΦ.a(15), b: void 0, v: null }])(ApiPath);
+__RΦ.m("rt:p", [{ n: "method", t: () => __RΦ.a(50794), b: void 0, v: null }, { n: "tagName", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "summary", t: () => __RΦ.a(15), b: void 0, v: null }])(ApiPath);
 __RΦ.m("rt:f", "C")(ApiPath);
 __RΦ.m("rt:t", () => __RΦ.a(15))(ApiPath.prototype, "tagName");
 __RΦ.m("rt:f", "P$")(ApiPath.prototype, "tagName");
 __RΦ.m("rt:t", () => __RΦ.a(15))(ApiPath.prototype, "summary");
 __RΦ.m("rt:f", "P$")(ApiPath.prototype, "summary");
-__RΦ.m("rt:t", () => __RΦ.a(48485))(ApiPath.prototype, "method");
+__RΦ.m("rt:t", () => __RΦ.a(50794))(ApiPath.prototype, "method");
 __RΦ.m("rt:f", "P$")(ApiPath.prototype, "method");
 __RΦ.m("rt:t", () => __RΦ.a(30))(ApiPath.prototype, "responses");
 __RΦ.m("rt:f", "P$")(ApiPath.prototype, "responses");
-__RΦ.m("rt:t", () => __RΦ.a(48834))(ApiPath.prototype, "parameters");
+__RΦ.m("rt:t", () => __RΦ.a(51144))(ApiPath.prototype, "parameters");
 __RΦ.m("rt:f", "P$")(ApiPath.prototype, "parameters");
 __RΦ.m("rt:t", () => __RΦ.a(30))(ApiPath.prototype, "requestBody");
 __RΦ.m("rt:f", "P$")(ApiPath.prototype, "requestBody");
 __RΦ.m("rt:f", "M.")(ApiPath.prototype["addResponse"]);
 ((t, p) => __RΦ.m("rt:h", () => typeof t === "object" ? t.constructor : t)(t[p]))(ApiPath.prototype, "addResponse");
-__RΦ.m("rt:p", [{ n: "statusCode", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "description", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "itemObject", t: () => __RΦ.a(48699), b: void 0, v: null, f: "?" }])(ApiPath.prototype, "addResponse");
+__RΦ.m("rt:p", [{ n: "statusCode", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "description", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "itemObject", t: () => __RΦ.a(51009), b: void 0, v: null, f: "?" }])(ApiPath.prototype, "addResponse");
 __RΦ.m("rt:f", "M.")(ApiPath.prototype, "addResponse");
 __RΦ.m("rt:t", () => __RΦ.a(24))(ApiPath.prototype, "addResponse");
 __RΦ.m("rt:f", "M.")(ApiPath.prototype["addParameter"]);
 ((t, p) => __RΦ.m("rt:h", () => typeof t === "object" ? t.constructor : t)(t[p]))(ApiPath.prototype, "addParameter");
-__RΦ.m("rt:p", [{ n: "paramIn", t: () => __RΦ.a(48847), b: void 0, v: null }, { n: "name", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "itemObject", t: () => __RΦ.a(48699), b: void 0, v: null }])(ApiPath.prototype, "addParameter");
+__RΦ.m("rt:p", [{ n: "paramIn", t: () => __RΦ.a(51157), b: void 0, v: null }, { n: "name", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "itemObject", t: () => __RΦ.a(51009), b: void 0, v: null }])(ApiPath.prototype, "addParameter");
 __RΦ.m("rt:f", "M.")(ApiPath.prototype, "addParameter");
 __RΦ.m("rt:t", () => __RΦ.a(24))(ApiPath.prototype, "addParameter");
 __RΦ.m("rt:f", "M.")(ApiPath.prototype["addRequestBody"]);
 ((t, p) => __RΦ.m("rt:h", () => typeof t === "object" ? t.constructor : t)(t[p]))(ApiPath.prototype, "addRequestBody");
-__RΦ.m("rt:p", [{ n: "itemObject", t: () => __RΦ.a(48699), b: void 0, v: null }])(ApiPath.prototype, "addRequestBody");
+__RΦ.m("rt:p", [{ n: "itemObject", t: () => __RΦ.a(51009), b: void 0, v: null }])(ApiPath.prototype, "addRequestBody");
 __RΦ.m("rt:f", "M.")(ApiPath.prototype, "addRequestBody");
 __RΦ.m("rt:t", () => __RΦ.a(24))(ApiPath.prototype, "addRequestBody");
 __RΦ.m("rt:f", "M.")(ApiPath.prototype["toDoc"]);
 ((t, p) => __RΦ.m("rt:h", () => typeof t === "object" ? t.constructor : t)(t[p]))(ApiPath.prototype, "toDoc");
 __RΦ.m("rt:p", [])(ApiPath.prototype, "toDoc");
 __RΦ.m("rt:f", "M.")(ApiPath.prototype, "toDoc");
-__RΦ.m("rt:t", () => __RΦ.a(48860))(ApiPath.prototype, "toDoc");
+__RΦ.m("rt:t", () => __RΦ.a(51170))(ApiPath.prototype, "toDoc");
 class ApiDocument {
     constructor() {
         this.tags = {};
@@ -436,7 +434,7 @@ class ApiDocument {
         };
     }
 }
-(t => __RΦ.t[48622] = t)(ApiDocument);
+(t => __RΦ.t[50931] = t)(ApiDocument);
 __RΦ.m("rt:SP", [])(ApiDocument);
 __RΦ.m("rt:P", ["title", "description", "license", "version", "openapi", "tags", "schemas", "paths"])(ApiDocument);
 __RΦ.m("rt:Sm", [])(ApiDocument);
@@ -460,19 +458,19 @@ __RΦ.m("rt:t", () => __RΦ.a(30))(ApiDocument.prototype, "paths");
 __RΦ.m("rt:f", "P#")(ApiDocument.prototype, "paths");
 __RΦ.m("rt:f", "M.")(ApiDocument.prototype["addSchema"]);
 ((t, p) => __RΦ.m("rt:h", () => typeof t === "object" ? t.constructor : t)(t[p]))(ApiDocument.prototype, "addSchema");
-__RΦ.m("rt:p", [{ n: "schema", t: () => __RΦ.a(48497), b: void 0, v: null }])(ApiDocument.prototype, "addSchema");
+__RΦ.m("rt:p", [{ n: "schema", t: () => __RΦ.a(50806), b: void 0, v: null }])(ApiDocument.prototype, "addSchema");
 __RΦ.m("rt:f", "M.")(ApiDocument.prototype, "addSchema");
 __RΦ.m("rt:t", () => __RΦ.a(24))(ApiDocument.prototype, "addSchema");
 __RΦ.m("rt:f", "M.")(ApiDocument.prototype["addPath"]);
 ((t, p) => __RΦ.m("rt:h", () => typeof t === "object" ? t.constructor : t)(t[p]))(ApiDocument.prototype, "addPath");
-__RΦ.m("rt:p", [{ n: "path", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "pathObject", t: () => __RΦ.a(48704), b: void 0, v: null }])(ApiDocument.prototype, "addPath");
+__RΦ.m("rt:p", [{ n: "path", t: () => __RΦ.a(15), b: void 0, v: null }, { n: "pathObject", t: () => __RΦ.a(51014), b: void 0, v: null }])(ApiDocument.prototype, "addPath");
 __RΦ.m("rt:f", "M.")(ApiDocument.prototype, "addPath");
 __RΦ.m("rt:t", () => __RΦ.a(24))(ApiDocument.prototype, "addPath");
 __RΦ.m("rt:f", "M.")(ApiDocument.prototype["toDoc"]);
 ((t, p) => __RΦ.m("rt:h", () => typeof t === "object" ? t.constructor : t)(t[p]))(ApiDocument.prototype, "toDoc");
 __RΦ.m("rt:p", [])(ApiDocument.prototype, "toDoc");
 __RΦ.m("rt:f", "M.")(ApiDocument.prototype, "toDoc");
-__RΦ.m("rt:t", () => __RΦ.a(48690))(ApiDocument.prototype, "toDoc");
+__RΦ.m("rt:t", () => __RΦ.a(51000))(ApiDocument.prototype, "toDoc");
 class ApiItem {
     constructor() {
         this.isArray = false;
@@ -511,13 +509,13 @@ class ApiItem {
         return items;
     }
 }
-(t => __RΦ.t[48699] = t)(ApiItem);
+(t => __RΦ.t[51009] = t)(ApiItem);
 __RΦ.m("rt:SP", [])(ApiItem);
 __RΦ.m("rt:P", ["typeKey", "isArray", "typeRef"])(ApiItem);
 __RΦ.m("rt:Sm", ["fromArray", "fromType"])(ApiItem);
 __RΦ.m("rt:m", ["toDoc"])(ApiItem);
 __RΦ.m("rt:f", "C")(ApiItem);
-__RΦ.m("rt:t", () => __RΦ.a(48489))(ApiItem.prototype, "typeKey");
+__RΦ.m("rt:t", () => __RΦ.a(50798))(ApiItem.prototype, "typeKey");
 __RΦ.m("rt:f", "P$")(ApiItem.prototype, "typeKey");
 __RΦ.m("rt:t", () => __RΦ.a(22))(ApiItem.prototype, "isArray");
 __RΦ.m("rt:f", "P$?")(ApiItem.prototype, "isArray");
@@ -525,16 +523,16 @@ __RΦ.m("rt:t", () => __RΦ.a(15))(ApiItem.prototype, "typeRef");
 __RΦ.m("rt:f", "P$?")(ApiItem.prototype, "typeRef");
 __RΦ.m("rt:f", "MS.")(ApiItem["fromArray"]);
 ((t, p) => __RΦ.m("rt:h", () => typeof t === "object" ? t.constructor : t)(t[p]))(ApiItem, "fromArray");
-__RΦ.m("rt:p", [{ n: "typeKey", t: () => __RΦ.a(48489), b: void 0, v: null }, { n: "typeRef", t: () => __RΦ.a(15), b: void 0, v: null, f: "?" }])(ApiItem, "fromArray");
+__RΦ.m("rt:p", [{ n: "typeKey", t: () => __RΦ.a(50798), b: void 0, v: null }, { n: "typeRef", t: () => __RΦ.a(15), b: void 0, v: null, f: "?" }])(ApiItem, "fromArray");
 __RΦ.m("rt:f", "MS.")(ApiItem, "fromArray");
-__RΦ.m("rt:t", () => __RΦ.a(48699))(ApiItem, "fromArray");
+__RΦ.m("rt:t", () => __RΦ.a(51009))(ApiItem, "fromArray");
 __RΦ.m("rt:f", "MS.")(ApiItem["fromType"]);
 ((t, p) => __RΦ.m("rt:h", () => typeof t === "object" ? t.constructor : t)(t[p]))(ApiItem, "fromType");
-__RΦ.m("rt:p", [{ n: "typeKey", t: () => __RΦ.a(48489), b: void 0, v: null }, { n: "typeRef", t: () => __RΦ.a(15), b: void 0, v: null, f: "?" }])(ApiItem, "fromType");
+__RΦ.m("rt:p", [{ n: "typeKey", t: () => __RΦ.a(50798), b: void 0, v: null }, { n: "typeRef", t: () => __RΦ.a(15), b: void 0, v: null, f: "?" }])(ApiItem, "fromType");
 __RΦ.m("rt:f", "MS.")(ApiItem, "fromType");
-__RΦ.m("rt:t", () => __RΦ.a(48699))(ApiItem, "fromType");
+__RΦ.m("rt:t", () => __RΦ.a(51009))(ApiItem, "fromType");
 __RΦ.m("rt:f", "M$.")(ApiItem.prototype["toDoc"]);
 ((t, p) => __RΦ.m("rt:h", () => typeof t === "object" ? t.constructor : t)(t[p]))(ApiItem.prototype, "toDoc");
 __RΦ.m("rt:p", [])(ApiItem.prototype, "toDoc");
 __RΦ.m("rt:f", "M$.")(ApiItem.prototype, "toDoc");
-__RΦ.m("rt:t", () => __RΦ.a(48828))(ApiItem.prototype, "toDoc");
+__RΦ.m("rt:t", () => __RΦ.a(51138))(ApiItem.prototype, "toDoc");
