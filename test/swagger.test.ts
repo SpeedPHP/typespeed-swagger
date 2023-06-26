@@ -9,14 +9,14 @@ describe("Test Swagger plugin for TypeSpeed", () => {
         done();
     });
     it("Swagger UI", (done) => {
-        chaiObj.request("http://app:8082").get("/docs").end((err, res) => {
+        chaiObj.request("http://127.0.0.1:8082").get("/docs").end((err, res) => {
             expect(res.status).to.be.equal(200);
             done();
         });
     });
     it("JSDoc for Project", (done) => {
         const jsonFile = require("../app/example.json");
-        chaiObj.request("http://app:8082").get("/docs/swagger.json").end((err, res) => {
+        chaiObj.request("http://127.0.0.1:8082").get("/docs/swagger.json").end((err, res) => {
             expect(JSON.stringify(res.body)).to.be.equal(JSON.stringify(jsonFile));
             done();
         });
