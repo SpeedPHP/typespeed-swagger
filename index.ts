@@ -101,7 +101,7 @@ function toMapping(method: MethodMappingType, path: string, mappingMethod: Funct
 function swaggerDocument(packageJsonPath?: string): object {
     if (routerMap.size === 0) return;
     const apiDocument = new ApiDocument();
-    if (packageJsonPath) {
+    if (packageJsonPath && fs.existsSync(packageJsonPath)) {
         try {
             const jsonContents = fs.readFileSync(packageJsonPath, 'utf8');
             const packageJson = JSON.parse(jsonContents);
@@ -165,7 +165,7 @@ function handleRealType(realType: any, callback: Function) {
 function handleRequestParams(apiPath: ApiPath, params: ParamMapType[]) {
     params.forEach(param => {
         const paramType = reflect(param.target[param.propertyKey]).parameters[param.parameterIndex];
-        if(!paramType || !paramType.type || paramType.type["_ref"]) return;
+        //if(!paramType || !paramType.type || paramType.type["_ref"]) return;
         const realType = paramType.type["_ref"];
         handleRealType(realType, (item: ApiItem) => {
             apiPath.addParameter(param.paramKind, param.paramName || paramType.name, item);
@@ -176,7 +176,7 @@ function handleRequestParams(apiPath: ApiPath, params: ParamMapType[]) {
 function handleRequestBody(apiPath: ApiPath, bodyParam: RequestBodyMapType) {
     const { target, propertyKey, parameterIndex } = bodyParam;
     const paramType = reflect(target[propertyKey]).parameters[parameterIndex];
-    if(!paramType || !paramType.type || paramType.type["_ref"]) return;
+    //if(!paramType || !paramType.type || paramType.type["_ref"]) return;
     const realType = paramType.type["_ref"];
     handleRealType(realType, (item: ApiItem) => {
         apiPath.addRequestBody(item);

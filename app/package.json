@@ -3,11 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "description": "The example for typespeed-swagger.",
-  "scripts": {
-    "watch": "nodemon ./ ",
-    "test": "ts-node -C ttypescript main.ts",
-    "build": "ttsc ./"
-  },
   "author": "speedphp",
   "license": "MIT"
 }

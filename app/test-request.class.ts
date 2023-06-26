@@ -19,15 +19,15 @@ export default class TestRequest {
     }
 
     @postMapping("/test/body")
-    testBody(@res res, @reqBody body: object):MutilUsers {
+    testBody(@res res, @reqBody body: UserDto):MutilUsers {
         log("body: " + JSON.stringify(body));
-        return new MutilUsers("group", [new UserDto(1, "name"), new UserDto(2, "name")]);
+        return new MutilUsers("group", [body]);
     }
 
     @postMapping("/test/form")
     testForm(@res res, @reqForm("name") name: string) {
         log("form: " + JSON.stringify(name));
-        res.send("test form");
+        res.send("Got name: " + name);
     }
 
     @getMapping("/test/param/:id")

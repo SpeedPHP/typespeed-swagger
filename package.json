@@ -5,9 +5,11 @@
   "main": "dist/index.js",
   "scripts": {
     "watch": "nodemon ./ ",
-    "test": "ts-node -C ttypescript test/main.ts",
+    "start": "ts-node -C ttypescript app/main.ts",
     "build": "ttsc index.ts",
-    "postbuild": "cp index.d.ts dist/index.d.ts"
+    "postbuild": "cp index.d.ts dist/index.d.ts",
+    "test": "mocha --require ts-node/register test/**/*.ts --exit",
+    "test-with-coverage": "nyc --reporter=text npm test"
   },
   "homepage": "https://github.com/speedphp/typespeed-swagger#readme",
   "repository": {
@@ -20,11 +22,16 @@
     "reflect-metadata": "0.1.13",
     "swagger-ui-express": "4.6.3",
     "typescript-rtti": "latest",
-    "typespeed": "^2.1.2"
+    "typespeed": "latest"
   },
   "devDependencies": {
     "@types/node": "18.0.6",
     "@types/swagger-ui-express": "4.1.3",
+    "@types/mocha": "^10.0.1",
+    "chai": "4.3.7",
+    "chai-http": "^4.4.0",
+    "mocha": "10.2.0",
+    "nyc": "^15.1.0",
     "ts-node": "^10.9.1",
     "ttypescript": "1.x",
     "typescript": "4.7.4"
