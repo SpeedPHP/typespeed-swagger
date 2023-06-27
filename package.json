@@ -9,7 +9,7 @@
     "build": "ttsc index.ts",
     "postbuild": "cp index.d.ts dist/index.d.ts",
     "test": "mocha --require ts-node/register test/**/*.ts --exit",
-    "test-with-coverage": "nyc --reporter=text npm test"
+    "test-with-coverage": "nyc --reporter=lcov npm test"
   },
   "homepage": "https://github.com/speedphp/typespeed-swagger#readme",
   "repository": {
