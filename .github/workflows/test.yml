@@ -27,6 +27,8 @@ jobs:
         run: npm install
       - name: Run Tests with Coverage
         run: npm run test-with-coverage
+        env:
+          LOCAL_HOST: localhost
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
         env:

@@ -5,13 +5,13 @@ const expect = chaiObj.expect;
 
 describe("Test Swagger plugin for TypeSpeed", () => {
     let appClose;
-    const hostname = os.hostname();
+    const hostname = process.env.LOCAL_HOST || os.hostname();
     before(function () {
         this.timeout(20000);
         appClose = require("../app/main");
     });
     it("Swagger UI", (done) =>  {
-        chaiObj.request(`http://localhost:8082`).get("/docs/").end((err, res) => {
+        chaiObj.request(`http://${hostname}:8082`).get("/docs/").end((err, res) => {
             expect(res.status).to.be.equal(200);
             done();
         });
