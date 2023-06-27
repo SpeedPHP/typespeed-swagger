@@ -1,5 +1,5 @@
 import { getMapping, postMapping, reqQuery, reqBody, reqForm, reqParam } from "../index";
-import { component, log, param, req, res, insert } from "typespeed";
+import { component, log, param, req, res, insert, Redis, autoware } from "typespeed";
 import MutilUsers from "./entities/mutil-users.class";
 import UserDto from "./entities/user-dto.class";
 
@@ -7,10 +7,20 @@ import UserDto from "./entities/user-dto.class";
 @component
 export default class TestRequest {
 
+    @autoware
+    private redisObj: Redis;
+
     @getMapping("/test/res")
     testRes(@req req, @res res) {
         this.addRow("name", 1);
         res.send("test res");
+    }
+
+    @getMapping("/redis")
+    async redisTest() {
+        await this.redisObj.set("redisKey", "Hello World");
+        const value = await this.redisObj.get("redisKey");
+        return "get from redis: " + value;
     }
 
     @insert("Insert into `user` (id, name) values (#{id}, #{name})")

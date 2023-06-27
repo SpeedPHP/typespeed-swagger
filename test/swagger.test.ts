@@ -30,6 +30,12 @@ describe("Test Swagger plugin for TypeSpeed", () => {
             done();
         });
     });
+    it("Test Redis", (done) =>  {
+        chaiObj.request(testAddr).get("/redis").end((err, res) => {
+            expect(res.text).to.be.equal("get from redis: Hello World");
+            done();
+        });
+    });
     after((done) => {
         if(appClose != null){
             appClose.default();

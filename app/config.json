@@ -4,5 +4,10 @@
         "user": "root",
         "password": "root",
         "database": "test"
+    },
+    "redis": {
+        "host": "127.0.0.1",
+        "port": "6379",
+        "db": 0
     }
 }

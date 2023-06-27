@@ -3,18 +3,19 @@ name: Tests
 
 jobs:
   test:
-    name: 'Node.js v${{ matrix.node }}'
+    name: 'Test TypeSpeed'
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node:
-          - 18
+    services:
+      redis:
+        image: redis
+        ports:
+          - 6379:6379
     steps:
       - uses: actions/setup-node@v1
         with:
-          node-version: '${{ matrix.node }}'
+          node-version: 18
       - uses: actions/checkout@v2
-      - name: Set up MySQL
+      - name: Setup MySQL
         run: |
           sudo /etc/init.d/mysql start
           mysql -e 'CREATE DATABASE test;USE test; \
@@ -24,9 +25,9 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-v${{ matrix.node }}-${{ hashFiles('**/package.json') }}
+          key: ${{ runner.os }}-node-v18-${{ hashFiles('**/package.json') }}
           restore-keys: |
-            ${{ runner.os }}-node-v${{ matrix.node }}-
+            ${{ runner.os }}-node-v18-
       - name: Install Dependencies
         run: npm install
       - name: Run Tests with Coverage
