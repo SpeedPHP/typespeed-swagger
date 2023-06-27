@@ -2,6 +2,7 @@
 
 [![typescript](https://badgen.net/badge/icon/TypeScript?icon=typescript&label)](https://www.npmjs.com/package/typespeed)
 [![license](https://badgen.net/github/license/speedphp/typespeed)](https://github.com/SpeedPHP/typespeed/blob/main/LICENSE)
+[![codecov](https://codecov.io/gh/SpeedPHP/typespeed-swagger/branch/main/graph/badge.svg?token=1RWEQXY3TB)](https://codecov.io/gh/SpeedPHP/typespeed-swagger)
 
 **The Swagger plugin for the TypeSpeed framework.**
 
