@@ -14,6 +14,12 @@ jobs:
         with:
           node-version: '${{ matrix.node }}'
       - uses: actions/checkout@v2
+      - name: Set up MySQL
+        run: |
+          sudo /etc/init.d/mysql start
+          mysql -e 'CREATE DATABASE test;USE test; \
+          CREATE TABLE `user` (`id` int(11) NOT NULL AUTO_INCREMENT,`name` varchar(100) DEFAULT NULL,PRIMARY KEY (`id`)) \
+          ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;SHOW TABLES;' -uroot -proot
       - name: 'Cache node_modules'
         uses: actions/cache@v2
         with:

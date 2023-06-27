@@ -24,6 +24,12 @@ describe("Test Swagger plugin for TypeSpeed", () => {
             done();
         });
     });
+    it("Test Database", (done) =>  {
+        chaiObj.request(testAddr).get("/test/res").end((err, res) => {
+            expect(res.status).to.be.equal(200);
+            done();
+        });
+    });
     after((done) => {
         if(appClose != null){
             appClose.default();

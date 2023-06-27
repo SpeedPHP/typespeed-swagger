@@ -1,5 +1,5 @@
 import { getMapping, postMapping, reqQuery, reqBody, reqForm, reqParam } from "../index";
-import { component, log, req, res } from "typespeed";
+import { component, log, param, req, res, insert } from "typespeed";
 import MutilUsers from "./entities/mutil-users.class";
 import UserDto from "./entities/user-dto.class";
 
@@ -9,8 +9,12 @@ export default class TestRequest {
 
     @getMapping("/test/res")
     testRes(@req req, @res res) {
+        this.addRow("name", 1);
         res.send("test res");
     }
+
+    @insert("Insert into `user` (id, name) values (#{id}, #{name})")
+    private async addRow(@param("name") newName: string, @param("id") id: number) { }
 
     @getMapping("/test/query")
     async testQuery(req, res, @reqQuery id: number): Promise<MutilUsers> {
