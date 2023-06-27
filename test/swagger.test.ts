@@ -1,17 +1,16 @@
+import * as os from "os";
 const chaiObj = require('chai');
 chaiObj.use(require("chai-http"));
 const expect = chaiObj.expect;
 
 describe("Test Swagger plugin for TypeSpeed", () => {
     let appClose;
-    let esApp;
+    const hostname = os.hostname();
     before(async () => {
         appClose = require("../app/main");
-        esApp = await appClose.default();
     });
     it("Swagger UI", (done) =>  {
-        console.log(esApp)
-        chaiObj.request(esApp).get("/docs").end((err, res) => {
+        chaiObj.request(`http://${hostname}:8082`).get("/docs").end((err, res) => {
             expect(res.status).to.be.equal(200);
             done();
         });
@@ -23,12 +22,12 @@ describe("Test Swagger plugin for TypeSpeed", () => {
     //         done();
     //     });
     // });
-    // after((done) => {
-    //     if(appClose != null){
-    //         appClose.default();
-    //     }
-    //     done();
-    // });
+    after((done) => {
+        if(appClose != null){
+            appClose.default();
+        }
+        done();
+    });
 });
 
 
