@@ -11,7 +11,7 @@ describe("Test Swagger plugin for TypeSpeed", () => {
         appClose = require("../app/main");
     });
     it("Swagger UI", (done) =>  {
-        chaiObj.request(`http://${hostname}:8082`).get("/docs").end((err, res) => {
+        chaiObj.request(`http://127.0.0.1:8082`).get("/docs").end((err, res) => {
             expect(res.status).to.be.equal(200);
             done();
         });
