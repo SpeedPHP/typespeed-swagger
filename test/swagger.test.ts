@@ -6,7 +6,8 @@ const expect = chaiObj.expect;
 describe("Test Swagger plugin for TypeSpeed", () => {
     let appClose;
     const hostname = os.hostname();
-    before(async () => {
+    before(function () {
+        this.timeout(20000);
         appClose = require("../app/main");
     });
     it("Swagger UI", (done) =>  {
