@@ -461,6 +461,34 @@
         }
       }
     },
+    "/redis": {
+      "get": {
+        "tags": [
+          "TestRequest"
+        ],
+        "summary": "redisTest",
+        "operationId": "redisTestGet",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/rabbitmq": {
+      "get": {
+        "tags": [
+          "TestRequest"
+        ],
+        "summary": "sendByMQClass",
+        "operationId": "sendByMQClassGet",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/test/query": {
       "get": {
         "tags": [

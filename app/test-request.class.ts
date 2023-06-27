@@ -1,5 +1,5 @@
 import { getMapping, postMapping, reqQuery, reqBody, reqForm, reqParam } from "../index";
-import { component, log, param, req, res, insert, Redis, autoware } from "typespeed";
+import { component, log, param, req, res, insert, Redis, autoware, RabbitMQ, rabbitListener } from "typespeed";
 import MutilUsers from "./entities/mutil-users.class";
 import UserDto from "./entities/user-dto.class";
 
@@ -9,6 +9,9 @@ export default class TestRequest {
 
     @autoware
     private redisObj: Redis;
+
+    @autoware
+    private rabbitMQ: RabbitMQ;
 
     @getMapping("/test/res")
     testRes(@req req, @res res) {
@@ -21,6 +24,17 @@ export default class TestRequest {
         await this.redisObj.set("redisKey", "Hello World");
         const value = await this.redisObj.get("redisKey");
         return "get from redis: " + value;
+    }
+
+    @getMapping("/rabbitmq")
+    async sendByMQClass() {
+        this.rabbitMQ.send("myqueues", "hello world, by MQClass");
+        return "Sent by MQClass";
+    }
+
+    @rabbitListener("myqueues")
+    public async listen(message) {
+        log(" Received by Decorator '%s'", message.content.toString());
     }
 
     @insert("Insert into `user` (id, name) values (#{id}, #{name})")

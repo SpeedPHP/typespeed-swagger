@@ -36,6 +36,12 @@ describe("Test Swagger plugin for TypeSpeed", () => {
             done();
         });
     });
+    it("Test RabbitMQ", (done) =>  {
+        chaiObj.request(testAddr).get("/rabbitmq").end((err, res) => {
+            expect(res.text).to.be.equal("Sent by MQClass");
+            done();
+        });
+    });
     after((done) => {
         if(appClose != null){
             appClose.default();
