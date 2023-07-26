@@ -21,7 +21,7 @@
   "dependencies": {
     "reflect-metadata": "latest",
     "swagger-ui-express": "latest",
-    "typescript-rtti": "latest",
+    "typescript-rtti": "0.9.5",
     "typespeed": "latest"
   },
   "devDependencies": {
@@ -33,8 +33,8 @@
     "mocha": "10.2.0",
     "nyc": "^15.1.0",
     "ts-node": "latest",
-    "ttypescript": "latest",
-    "typescript": "latest"
+    "ttypescript": "1.5.15",
+    "typescript": "4.9"
   },
   "keywords": [
     "typespeed",
