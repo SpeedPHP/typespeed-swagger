@@ -19,22 +19,22 @@
   "author": "speedphp",
   "license": "MIT",
   "dependencies": {
-    "reflect-metadata": "0.1.13",
-    "swagger-ui-express": "4.6.3",
+    "reflect-metadata": "latest",
+    "swagger-ui-express": "latest",
     "typescript-rtti": "latest",
     "typespeed": "latest"
   },
   "devDependencies": {
-    "@types/node": "18.0.6",
-    "@types/swagger-ui-express": "4.1.3",
+    "@types/node": "latest",
+    "@types/swagger-ui-express": "latest",
     "@types/mocha": "^10.0.1",
     "chai": "4.3.7",
     "chai-http": "^4.4.0",
     "mocha": "10.2.0",
     "nyc": "^15.1.0",
-    "ts-node": "^10.9.1",
-    "ttypescript": "1.x",
-    "typescript": "4.7.4"
+    "ts-node": "latest",
+    "ttypescript": "latest",
+    "typescript": "latest"
   },
   "keywords": [
     "typespeed",
