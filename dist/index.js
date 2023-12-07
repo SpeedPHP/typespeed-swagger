@@ -230,7 +230,7 @@ function createApiPath(router) {
     const { method, clazz, target, propertyKey } = router;
     const apiPath = new ApiPath(method, clazz, propertyKey);
     const responseType = (0, typescript_rtti_1.reflect)(target[propertyKey], { TΦ: "c", t: void 0, p: [__RΦ.a(1)], r: void 0, tp: [] }).returnType;
-    if (!responseType || responseType["_ref"]) {
+    if (!responseType || !responseType["_ref"]) {
         apiPath.addResponse("200", "OK");
         return apiPath;
     }
